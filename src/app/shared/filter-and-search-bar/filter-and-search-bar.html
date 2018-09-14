@@ -1,0 +1,43 @@
+<mat-card>
+  <mat-card-content>
+    <mat-form-field class="bar">
+      <input type="search" matInput placeholder="Busca" [(ngModel)]="search" (keydown.enter)="setSearchBy(search)">
+      <mat-icon matSuffix (click)="setSearchBy(search)">search</mat-icon>
+      <mat-hint align="end">Pressione ENTER ou Clique no ICONE Para Efetivar a Buscar</mat-hint>
+    </mat-form-field>
+    <div class="order-by">
+      <button mat-icon-button [matMenuTriggerFor]="orderBy">
+        <span>Ordenar por: <a class="default">{{_orderByName === 'name' ? 'Nome do Personagem' : 'Data de Modificação'}}</a></span>
+        <mat-icon>arrow_drop_down</mat-icon>
+      </button>
+      <mat-menu #orderBy="matMenu" yPosition="below">
+        <button mat-menu-item (click)="setOrderByName('name')" [class.active]="_orderByName === 'name'">
+          <span>Nome do Personagem</span>
+        </button>
+        <button mat-menu-item (click)="setOrderByName('modified')" [class.active]="_orderByName === 'modified'">
+          <span>Data de Modificação</span>
+        </button>
+        <!-- <button mat-menu-item disabled>
+          <mat-icon>voicemail</mat-icon>
+          <span>Check voicemail</span>
+        </button> -->
+      </mat-menu>
+    </div>
+    <div class="class-by">
+      <button mat-icon-button [matMenuTriggerFor]="classBy">
+        <span>Classificar por <a class="default">{{_orderBy === '' ? 'A-Z' : 'Z-A'}}</a></span>
+        <mat-icon>arrow_drop_down</mat-icon>
+      </button>
+      <mat-menu #classBy="matMenu">
+        <button mat-menu-item (click)="setOrderBy('')"  [class.active]="_orderBy === ''">
+          <mat-icon style="transform: rotate(-90deg);">trending_flat</mat-icon>
+          <span>A-Z</span>
+        </button>
+        <button mat-menu-item (click)="setOrderBy('-')"  [class.active]="_orderBy === '-'">
+          <mat-icon style="transform: rotate(90deg);">trending_flat</mat-icon>
+          <span>Z-A</span>
+        </button>
+      </mat-menu>
+    </div>
+  </mat-card-content>
+</mat-card>

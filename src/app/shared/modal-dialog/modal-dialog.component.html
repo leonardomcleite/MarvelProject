@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>Despesas do Deputado</h1>
+<div mat-dialog-content>
+  <div *ngFor="let despesa of data; let i = index">
+    <p><b>Tipo de Despesa</b><span>{{despesa.tipoDespesa}}</span></p>
+    <p><b>Valor Gasto</b><span>{{despesa.valorLiquido | number}}</span></p>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <!-- <button mat-button (click)="onNoClick()">No Thanks</button> -->
+  <button mat-button cdkFocusInitial (click)="onNoClick()">Voltar</button>
+</div>

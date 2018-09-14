@@ -1,0 +1,49 @@
+
+// @mixin page-change-loading-theme($theme) {
+//   $primary: map-get($theme, primary);
+//   $accent: map-get($theme, accent);
+//   $warn: map-get($theme, warn);
+
+// page-loading {
+//   color: #20B2BB;
+//   background-color: #20B2BB;
+
+//   .object {
+//     border-bottom-color: transparent;
+//     border-right-color: transparent;
+//     border-top-color: #20B2BB;
+//     border-left-color: #20B2BB;
+//   }
+
+//   &.primary {
+//     background-color: #20B2BB;
+//     color: #20B2BB;
+
+//     .object {
+//       border-top-color: #20B2BB;
+//       border-left-color: #20B2BB;
+//     }
+//   }
+
+//   &.accent {
+//     background-color: #20B2BB;
+//     color: #20B2BB;
+
+//     .object {
+//       border-top-color: #20B2BB;
+//       border-left-color: #20B2BB;
+//     }
+//   }
+
+//   &.warn {
+//     background-color:#20B2BB;
+//     color: #20B2BB;
+
+//     .object {
+//       border-top-color: #20B2BB;
+//       border-left-color: #20B2BB;
+//     }
+//   }
+// }
+// // }
+

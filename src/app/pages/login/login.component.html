@@ -1,0 +1,24 @@
+<div class="background">
+  <mat-card class="login">
+    <mat-card-header class="login">
+      <img class="login" matCardImage src="../../../assets/images/Avatares/Avatar_B_02.png">
+      <h1 class="login">Login</h1>
+    </mat-card-header>
+    <mat-card-content class="login">
+      <form >
+        <mat-form-field>
+          <input type="text" ngModel matInput placeholder="Usuário ou Email" [(ngModel)]="userAuth.user" name="User">
+        </mat-form-field>
+        <mat-form-field>
+          <input type="password" ngModel matInput placeholder="Senha" [(ngModel)]="userAuth.password" name="Password">
+        </mat-form-field>
+      </form>
+    </mat-card-content>
+    <mat-card-actions align="center" class="login">
+      <button mat-raised-button color="primary" (click)="authLogin()">Login</button>
+    </mat-card-actions>
+    <mat-card-footer class="register">
+      Não tem uma conta? <a routerLink="/register"> Cadastre-se agora</a>
+    </mat-card-footer>
+  </mat-card>
+</div>

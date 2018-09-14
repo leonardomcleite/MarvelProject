@@ -1,0 +1,132 @@
+.error-content {
+  // display: grid;
+  display: flow-root;
+}
+
+.image-error {
+  width: 33.1%;
+  float: right;
+  // margin: 0 0 0 auto;
+}
+
+.description-error {
+  float: left;
+
+  .image {
+    // width: 18px;
+    // height: 18px;
+  }
+
+  
+  .text {}
+}
+span.code-error {
+  font-size: 100px !important;
+}
+
+
+.repair {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+.repair_header {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 50px;
+  padding: 20px;
+}
+.repair_logo {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.repair_logo img {
+  width: 40%;
+  height: 40%;
+  object-fit: contain;
+}
+.repair_title {
+  font-size: 24px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  margin-left: -15px;
+}
+.repair_section {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.repair_content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding-bottom: 30%;
+}
+.repair_content_title {
+  font-size: 60px;
+  margin-bottom: 20px;
+}
+.repair_content_text {
+  font-size: 18px;
+  font-weight: 500;
+  text-transform: none;
+}
+.repair_animation {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60%;
+  z-index: 1;
+  /* height: 100%; */
+  /* height: 600px; */
+}
+.repair_animation::before {
+  content: "";
+  height: calc(100% - 39px);
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+}
+.repair_canvas {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  -webkit-perspective: 1000px;
+  overflow: hidden;
+}
+.repair_canvas_upper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 10;
+}
+.canvas_line {
+  width: 100%;
+}
+.canvas_element {
+  position: absolute;
+  z-index: 10;
+}
+.canvas_background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 0.3;
+}
+

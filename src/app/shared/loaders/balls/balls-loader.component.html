@@ -1,0 +1,53 @@
+<div class="loader loader-bouncing is-active" *ngIf="typeLoader == 'balls'"></div>
+<div class="loader loader-bouncing-two is-active" *ngIf="typeLoader == 'balls'"></div>
+
+<div class="inner" style="width:100px;height:200px;background:none" *ngIf="typeLoader == 'bars'">
+  <div id="stock-preview-box" ld-spinner-preview="" ng-config="config" ng-ctrl="demo" ng-mod="mod" ng-class="{'loading':demo.show != 3}"
+    style="width:100%;height:100%;margin:0;padding:0;" class="ng-isolate-scope">
+    <div class="lds-svg ng-scope"><svg class="lds-equalizer" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+        <g transform="rotate(180 50 50)">
+          <rect y="15" height="74.2368" fill="#1d3f72" x="6.111111111111111" width="10">
+            <animate attributeName="height" calcMode="spline" values="50;75;10;50" times="0;0.33;0.66;1" keySplines="0.5 0 0.5 1;0.5 0 0.5 1;0.5 0 0.5 1"
+              repeatCount="indefinite" begin="-2.0999999999999996s" dur="2.8">
+            </animate>
+          </rect>
+          <rect y="15" height="61.5873" fill="#5699d2" x="17.22222222222222" width="10">
+            <animate attributeName="height" calcMode="spline" values="50;75;10;50" times="0;0.33;0.66;1" keySplines="0.5 0 0.5 1;0.5 0 0.5 1;0.5 0 0.5 1"
+              repeatCount="indefinite" begin="-1.75s" dur="2.8">
+            </animate>
+          </rect>
+          <rect y="15" height="50.4095" fill="#d8ebf9" x="28.333333333333336" width="10">
+            <animate attributeName="height" calcMode="spline" values="50;75;10;50" times="0;0.33;0.66;1" keySplines="0.5 0 0.5 1;0.5 0 0.5 1;0.5 0 0.5 1"
+              repeatCount="indefinite" begin="-1.4s" dur="2.8">
+            </animate>
+          </rect>
+          <rect y="15" height="19.4691" fill="#71c2cc" x="39.44444444444444" width="10">
+            <animate attributeName="height" calcMode="spline" values="50;75;10;50" times="0;0.33;0.66;1" keySplines="0.5 0 0.5 1;0.5 0 0.5 1;0.5 0 0.5 1"
+              repeatCount="indefinite" begin="-0.7s" dur="2.8">
+            </animate>
+          </rect>
+          <rect y="15" height="45.0342" fill="#4996a2" x="50.55555555555556" width="10">
+            <animate attributeName="height" calcMode="spline" values="50;75;10;50" times="0;0.33;0.66;1" keySplines="0.5 0 0.5 1;0.5 0 0.5 1;0.5 0 0.5 1"
+              repeatCount="indefinite" begin="-1.0499999999999998s" dur="2.8">
+            </animate>
+          </rect>
+          <rect y="15" height="10.0293" fill="#785471" x="61.66666666666667" width="10">
+            <animate attributeName="height" calcMode="spline" values="50;75;10;50" times="0;0.33;0.66;1" keySplines="0.5 0 0.5 1;0.5 0 0.5 1;0.5 0 0.5 1"
+              repeatCount="indefinite" begin="-0.35s" dur="2.8">
+            </animate>
+          </rect>
+          <rect y="15" height="69.1929" fill="#e8cdc5" x="72.77777777777777" width="10">
+            <animate attributeName="height" calcMode="spline" values="50;75;10;50" times="0;0.33;0.66;1" keySplines="0.5 0 0.5 1;0.5 0 0.5 1;0.5 0 0.5 1"
+              repeatCount="indefinite" begin="-2.4499999999999997s" dur="2.8">
+            </animate>
+          </rect>
+          <rect y="15" height="29.2794" fill="#eee7d8" x="83.88888888888889" width="10">
+            <animate attributeName="height" calcMode="spline" values="50;75;10;50" times="0;0.33;0.66;1" keySplines="0.5 0 0.5 1;0.5 0 0.5 1;0.5 0 0.5 1"
+              repeatCount="indefinite" begin="0s" dur="2.8">
+            </animate>
+          </rect>
+        </g>
+      </svg></div>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+.mat-toolbar-row,
+.mat-toolbar-single-row {
+  height: 48px;
+}
+
+.mat-toolbar-multiple-rows {
+  min-height: 48px;
+}
+
+.example-is-mobile .example-toolbar {
+  position: fixed;
+  z-index: 2;
+}
+
+mat-toolbar-row {
+  z-index: 2;
+}
+
+h1.example-app-name {
+  margin-left: 8px;
+}
