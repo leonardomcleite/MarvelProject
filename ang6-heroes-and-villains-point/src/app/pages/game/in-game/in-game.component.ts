@@ -9,6 +9,12 @@ import { DateFormatUtilService } from '../../../shared/utils/date-format/date-fo
 import { ScrolledService } from '../../../shared/utils/scrolled/scrolled.service';
 import { MarvelHeroesService } from 'src/app/services/marvel-heroes/marvel-heroes.service';
 
+enum Stage {
+  Start = 0,
+  InGame = 1,
+  EndGame = 2,
+  GameOver = 3
+}
 @Component({
   // tslint:disable-next-line:component-selector
   selector: 'in-game',
@@ -220,12 +226,12 @@ export class InGameComponent implements OnInit {
   endedInATie(): any {
     if (this.vez) {
       if (this.playerTwo.length === 1) {
-        this.gameService.startGame.emit(2);
+        this.gameService.turnGame.emit(Stage.EndGame);
       }
       this.playerTwo[0].side = !this.playerTwo[0].side;
     } else {
       if (this.playerOne.length === 1) {
-        this.gameService.startGame.emit(2);
+        this.gameService.turnGame.emit(Stage.GameOver);
       }
       this.playerOne[0].side = !this.playerOne[0].side;
     }
@@ -234,10 +240,10 @@ export class InGameComponent implements OnInit {
     setTimeout(() => {
     if (this.vez) {
       this.playerTwo.push(this.playerTwo[0]);
-      this.playerTwo.splice(0, 1);
+      this.playerTwo.shift();
     } else {
       this.playerOne.push(this.playerOne[0]);
-      this.playerOne.splice(0, 1);
+      this.playerOne.shift();
     }
     this.vez = !this.vez;
     this.newRound();
@@ -253,9 +259,9 @@ export class InGameComponent implements OnInit {
       this.notificationService.notification(messageOptions);
       setTimeout(() => {
         this.playerOne.push(this.playerTwo[0]);
-        this.playerTwo.splice(0, 1);
+        this.playerTwo.shift();
         this.playerOne.push(this.playerOne[0]);
-        this.playerOne.splice(0, 1);
+        this.playerOne.shift();
 
         if (this.vez) {
           this.playerTwo[0].side = !this.playerTwo[0].side;
@@ -269,9 +275,9 @@ export class InGameComponent implements OnInit {
       this.notificationService.notification(messageOptions);
       setTimeout(() => {
         this.playerTwo.push(this.playerOne[0]);
-        this.playerOne.splice(0, 1);
+        this.playerOne.shift();
         this.playerTwo.push(this.playerTwo[0]);
-        this.playerTwo.splice(0, 1);
+        this.playerTwo.shift();
 
         if (this.vez) {
           this.playerTwo[0].side = !this.playerTwo[0].side;
@@ -285,11 +291,11 @@ export class InGameComponent implements OnInit {
 
   newRound() {
     if (this.playerOne.length === 0) {
-      this.gameService.startGame.emit(3);
+      this.gameService.turnGame.emit(Stage.GameOver);
       return;
     }
     if (this.playerTwo.length === 0) {
-      this.gameService.startGame.emit(2);
+      this.gameService.turnGame.emit(Stage.EndGame);
       return;
     }
     this.last = 330;
@@ -305,7 +311,7 @@ export class InGameComponent implements OnInit {
   }
 
   quitGame() {
-    this.gameService.startGame.emit(0);
+    this.gameService.turnGame.emit(Stage.Start);
   }
 
 }

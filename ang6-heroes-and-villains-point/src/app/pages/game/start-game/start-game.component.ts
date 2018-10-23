@@ -16,7 +16,7 @@ export class StartGameComponent {
   ) {}
 
   start() {
-    this.gameService.startGame.emit(1);
+    this.gameService.turnGame.emit(1);
   }
 
 }

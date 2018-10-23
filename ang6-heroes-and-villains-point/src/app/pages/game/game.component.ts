@@ -25,7 +25,7 @@ export class GameComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.subscription.push(this.gameService.startGame.subscribe(observable => {
+    this.subscription.push(this.gameService.turnGame.subscribe(observable => {
       this.stageGame = observable;
     }));
   }
