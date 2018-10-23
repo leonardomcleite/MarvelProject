@@ -1,0 +1,47 @@
+div.background {
+  width: 100%;
+  height: 100vh;
+  background: url(../../../assets/images/Backgrounds/back-login.jpg) no-repeat top center scroll;
+  background-size: cover;
+  display: table;
+}
+
+mat-card.login.mat-card {
+  position: absolute;
+  width: 300px;
+  left: calc(50% - 150px);
+  top: calc(50% - 278.5px);
+  background: rgba(66, 66, 66, 0.8);
+}
+
+mat-card.login img {
+  width: 150px;
+  height: 150px;
+  margin: 0 auto;
+  display: flex;
+}
+
+mat-card-header.login.mat-card-header {
+  display: initial;
+}
+
+h1.login {
+  text-align: center;
+  margin: 0px;
+}
+
+.register {
+  text-align: center;
+  padding: 10px 0;
+}
+
+div.or-divider {
+  text-align: center;
+  height: 10px;
+  line-height: 10px;
+}
+
+span.or-divider {
+  font-size: 14px;
+  font-weight: bold;
+}

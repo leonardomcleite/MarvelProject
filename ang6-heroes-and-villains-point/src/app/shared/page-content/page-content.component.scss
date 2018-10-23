@@ -1,0 +1,39 @@
+$color-success: #269800;
+$color-warning: #F0B322;
+$color-information: #3AB3B9;
+$color-error: #CC362C;
+
+mat-icon {
+  line-height: 50px;
+  &.success {
+    color: $color-success;
+  }
+  &.warning {
+    color: $color-warning;
+  }
+  &.information {
+    color: $color-information;
+  }
+  &.error {
+    color: $color-error;
+  }
+}
+
+div.icon {
+  line-height: 50px;
+  display: -webkit-box;
+}
+
+div.actions {
+  line-height: 50px;
+  display: -webkit-inline-box;
+}
+
+span.content {
+  padding: 0 10px;
+  line-height: 55px;
+}
+
+button.btnAction.mat-button {
+  height: 39px;
+}

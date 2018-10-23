@@ -1,0 +1,48 @@
+<modal-dialog [modalTitle]="data.title">
+  <div class="form-container" modal-content>
+    <form [formGroup]="formRegister">
+      <mat-form-field>
+        <input matInput placeholder="Titulo Menu" formControlName="nameMenu">
+        <mat-hint>Nome que aparecerá no menu sidenav</mat-hint>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Descrição" formControlName="description">
+        <mat-hint>Nome que aparecerá no submenu</mat-hint>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Rota" formControlName="route">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select placeholder="Colocar Nos Favoritos?" formControlName="favorite">
+          <mat-option value="1">Sim</mat-option>
+          <mat-option value="0">Não</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select placeholder="Esconder Menu?" formControlName="hidden">
+          <mat-option value="1">Sim</mat-option>
+          <mat-option value="0">Não</mat-option>
+        </mat-select>
+        <mat-hint>Ocultar menu na sidenav</mat-hint>
+      </mat-form-field>
+      <div class="input-icon">
+        <mat-form-field>
+          <mat-icon class="mat-18">{{formRegister.get('icon').value}}</mat-icon>
+          <input type="text" matInput placeholder="Icone" formControlName="icon" [matAutocomplete]="autoGroup">
+          <mat-autocomplete #autoGroup="matAutocomplete">
+            <mat-optgroup *ngFor="let group of iconClassification | async" [label]="group.letter">
+              <mat-option *ngFor="let name of group.names" [value]="name">
+                {{name}}
+              </mat-option>
+            </mat-optgroup>
+          </mat-autocomplete>
+        </mat-form-field>
+      </div>
+    </form>
+  </div>
+  
+  <div modal-actions>
+    <button mat-raised-button color="accent" (click)="onSubmit()" [disabled]="!formRegister.valid">Enviar</button>
+    <button mat-stroked-button cdkFocusInitial color="accent" (click)="onClose()">Cancelar</button>
+  </div>
+</modal-dialog>

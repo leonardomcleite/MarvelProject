@@ -1,0 +1,11 @@
+<div>
+  <header [ngStyle]="{ 'background': 'url(' + image + ') no-repeat'}">
+    <h1 *ngIf="principalTitle">{{principalTitle}}</h1>
+  </header>
+
+  <mat-card class="content mat-elevation-z8">
+    <mat-card-content>
+      <ng-content select="[content]"></ng-content>
+    </mat-card-content>
+  </mat-card>
+</div>

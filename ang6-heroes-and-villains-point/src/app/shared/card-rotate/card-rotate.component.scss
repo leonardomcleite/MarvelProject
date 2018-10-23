@@ -1,0 +1,39 @@
+@media only screen and (min-width:1000px) {
+  .scene {
+    width: calc(50% - 25px) !important;
+  }
+} // Media query para Desktop
+@media only screen and (min-width:2500px) {
+  .scene {
+    width: calc(33.3333333333% - 25px) !important;
+  }
+} // Media query para Desktop
+
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// Classes deste componente
+.scene {
+  width: calc(100% - 25px);
+  margin: 12px !important;
+  perspective: 3000px;
+  float: left;
+}
+.card.is-flipped {
+  transform: rotateY(180deg);
+}
+.card__face {
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.card__face--back {
+  transform: rotateY(180deg);
+}
+.card {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+  position: relative;
+}
+// ----------------------------------------------------------------

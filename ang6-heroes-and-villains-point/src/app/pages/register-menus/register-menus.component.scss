@@ -1,0 +1,39 @@
+mat-icon.mat-icon.mat-18 {
+    margin: 0px 8px;
+}
+
+div.input-icon {
+    display: flex;
+}
+
+span.title {
+    line-height: 47px;
+}
+
+.button-menu, span.title {
+    font-size: 28px !important;
+}
+
+button.button-menu {
+    color: #b0bec5;
+}
+
+span.selected-items {
+    display: contents;
+    font-size: 28px;
+    line-height: 47px;
+}
+
+button.mat-mini-fab {
+    float: right;
+    top: 36px;
+    height: 50px;
+    width: 50px;
+    line-height: 50px;
+    z-index: 4;
+}
+
+.menu-action {
+    display: -webkit-inline-box;
+    line-height: 40px;
+}

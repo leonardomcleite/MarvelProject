@@ -1,0 +1,28 @@
+div.backgroung {
+  background-image: url(../../../../assets/images/Game/Mike-Alcantara_22.jpg);
+  height: 460px;
+  background-size: 100% 100%;
+  margin: 1% 20%;
+  vertical-align: middle;
+
+  h1 {
+    text-shadow: 2px 2px #252424;
+    text-align: center;
+  }
+}
+
+.actions {
+  padding: 230px;
+  text-align: center;
+  display: grid;
+}
+
+.btn-actions {
+  height: 45px;
+  line-height: 40px;
+  margin: 10px 0;
+}
+
+span.txt-btn {
+  font-size: 27px !important;
+}

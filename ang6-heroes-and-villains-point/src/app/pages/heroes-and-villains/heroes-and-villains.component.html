@@ -1,0 +1,73 @@
+<div *ngIf="lazyLoad.error">
+  <error></error>
+</div>
+<div *ngIf="!lazyLoad.error">
+  <header>
+    <h1>Todos os Heróis e Vilões Estão Aqui</h1>
+  </header>
+  <filter-and-search-bar
+  [@barFilterPosition]="fixar"
+  (orderBy)="orderBy($event)"
+  (orderByName)="orderByName($event)"
+  (searchBy)="searchBy($event)">
+  </filter-and-search-bar>
+  <mat-tab-group [backgroundColor]="'accent'" [(selectedIndex)]="selectedTab" (selectedIndexChange)="tabChange()">
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon class="example-tab-icon">recent_actors</mat-icon>
+        Heróis e Vilões
+      </ng-template>
+      <mat-card class="example-card" *ngFor="let heroe of heroes; let i = index">
+        <div class="border-bottom-card"></div>
+        <mat-card-header>
+          <div mat-card-avatar class="header-image">
+            <mat-icon (mouseenter)="heroe.favorite = !heroe.favorite" (mouseleave)="heroe.favorite = !heroe.favorite"
+              (click)="marcarFavorito(heroe.favorite, i)" class="favorite" [class.star]="heroe.favorite">{{heroe.favorite
+              ? 'star' : 'star_border'}}</mat-icon>
+          </div>
+          <mat-card-title>{{heroe.name}}</mat-card-title>
+          <mat-card-subtitle>Modificado em: {{dateUtil.formatDate(heroe.modified, 'dd/mm/yyyy')}}</mat-card-subtitle>
+        </mat-card-header>
+        <div class="zoom" [routerLink]="['/character', heroe.name, heroe.id]">
+          <img mat-card-image [src]="imgLoad(heroe?.thumbnail)">
+        </div>
+        <mat-card-content>
+          <div class="statistics">
+            <span class="title-statistics">Caráter: </span>
+            <span class="text-statistics">{{deParaCarater(heroe?.Alignment)}}</span>
+          </div>
+          <div class="statistics">
+            <span class="title-statistics">Inteligência (0 à 7)</span>
+            <mat-progress-bar mode="determinate" [value]="heroe?.intelligence / 7 * 100" [matTooltip]="'Inteligência: ' + heroe?.intelligence"></mat-progress-bar>
+          </div>
+          <div class="statistics">
+            <span class="title-statistics">Força (0 à 7)</span>
+            <mat-progress-bar mode="determinate" [value]="heroe?.strength / 7 * 100" [matTooltip]="'Força: ' + heroe?.strength"></mat-progress-bar>
+          </div>
+          <div class="statistics">
+            <span class="title-statistics">Energia (0 à 7)</span>
+            <mat-progress-bar mode="determinate" [value]="heroe?.energy / 7 * 100" [matTooltip]="'Energia: ' + heroe?.energy"></mat-progress-bar>
+          </div>
+          <div class="statistics">
+            <span class="title-statistics">Rapidez (0 à 7)</span>
+            <mat-progress-bar mode="determinate" [value]="heroe?.speed / 7 * 100" [matTooltip]="'Rapidez: ' + heroe?.speed"></mat-progress-bar>
+          </div>
+          <div class="statistics">
+            <span class="title-statistics">Durabilidade (0 à 7)</span>
+            <mat-progress-bar mode="determinate" [value]="heroe?.durability / 7 * 100" [matTooltip]="'Durabilidade: ' + heroe?.durability"></mat-progress-bar>
+          </div>
+          <div class="statistics">
+            <span class="title-statistics">Combate (0 à 7)</span>
+            <mat-progress-bar mode="determinate" [value]="heroe?.combat / 7 * 100" [matTooltip]="'Combate: ' + heroe?.combat"></mat-progress-bar>
+          </div>
+        </mat-card-content>
+      </mat-card>
+      <div>
+        <a class="end-results" *ngIf="endHeroes" [href]="path">
+          <mat-icon>keyboard_arrow_up</mat-icon><span>Fim dos Resultados</span><mat-icon>keyboard_arrow_up</mat-icon>
+        </a>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>
+<gooey-ring-loader *ngIf="lazyLoad.loading && !lazyLoad.error"></gooey-ring-loader>

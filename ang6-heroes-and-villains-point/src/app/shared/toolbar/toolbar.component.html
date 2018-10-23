@@ -1,0 +1,29 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row class="mat-elevation-z3" [class.notBackIcon]="!backPageIcon">
+    
+    <div class="tools-left">
+      <button mat-icon-button (click)="backPage()" *ngIf="backPageIcon">
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+      <button mat-icon-button (click)="setSidenav()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span class="divider-icons">|</span>
+      <button class="btn-favorite" mat-icon-button [routerLink]="favorite?.route" *ngFor="let favorite of favorites" [matTooltip]="favorite.description">
+        <mat-icon>{{favorite?.icon}}</mat-icon>
+      </button>
+    </div>
+    <div class="tools-right">
+      <button mat-icon-button class="button-profile" matTooltip="Perfil Usuário" [matMenuTriggerFor]="menu">
+        <mat-icon class="mat-18">account_circle</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu" overlapTrigger="false">
+        <p class="title">Usuário Logado: <span class="text" color="accent">{{userLogged?.user}}</span></p>
+        <mat-divider></mat-divider>
+        <button mat-menu-item routerLink="/user-profile">Ver Perfil</button>
+        <button mat-menu-item (click)="logout()">Sair</button>
+      </mat-menu>
+    </div>
+    <!-- <theme-picker></theme-picker> -->
+  </mat-toolbar-row>
+</mat-toolbar>

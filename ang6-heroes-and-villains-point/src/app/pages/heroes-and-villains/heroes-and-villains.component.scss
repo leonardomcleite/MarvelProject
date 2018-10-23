@@ -1,0 +1,123 @@
+header {
+  height: 210px;
+  background: url(../../../assets/images/Headers/header-heroes3.jpg) no-repeat;
+  background-size: 100% 147%;
+  margin-bottom: 50px;
+  text-align: center;
+  line-height: 210px;
+  h1 {
+    text-shadow: 2px 2px #787878;
+  }
+}
+
+.example-card {
+  display: inline-grid;
+}
+
+mat-card-title.mat-card-title {
+  min-height: 34px;
+}
+
+mat-card.mat-card {
+  margin: 16px;
+  width: 189px;
+}
+
+.mat-card-image {
+  width: inherit !important;
+  margin-top: inherit !important;
+  width: inherit !important;
+  margin: inherit !important;
+  min-height: 300px;
+}
+
+.mat-card-image:first-child {
+  margin-top: 0px;
+}
+
+.back-page {
+  left: 20px;
+  top: 90px;
+  position: absolute;
+}
+
+.zoom {
+	overflow: hidden;
+  height: 300px;
+  width: 100%;
+}
+
+.zoom img {
+	-moz-transition: all .4s;
+	-webkit-transition: all .4s;
+  transition: all .4s;
+  width: 100%;
+}
+
+.border-bottom-card {
+  height: 4px;
+  content: "";
+  background-color: #F44336;
+  width: 100%;
+  position: absolute;
+  z-index: 0;
+  top: 0;
+}
+
+mat-card:hover {
+  cursor: pointer;
+  outline: none;
+  .border-bottom-card {
+    height: 404px;
+    transition: height .4s;
+  }
+  img {
+    -moz-transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+  .star {
+    color: #fff;
+  }
+}
+
+mat-card-header {
+  z-index: 2;
+}
+
+.favorite {
+  font-size: 30px;
+}
+
+.header-image {
+  padding: 0 5px;
+  text-align: center;
+}
+
+mat-card.mat-card {
+  margin: 16px;
+  width: 236px;
+  padding: 24px 0;
+}
+
+.mat-card-actions {
+  margin: 0px;
+  padding: 8px 0;
+}
+
+span.title-statistics {
+  font-size: 14px !important;
+  margin: 10px 0 0 0 !important;
+  display: inline-block;
+}
+
+span.text-statistics {
+  font-size: 16px !important;
+  color: #f44336;
+  padding-left: 5px;
+  font-weight: bold;
+}
+
+mat-card-content.mat-card-content {
+  padding: 10px;
+}

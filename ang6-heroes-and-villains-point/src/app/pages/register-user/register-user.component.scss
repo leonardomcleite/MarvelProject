@@ -1,0 +1,75 @@
+@media only screen and (min-width: 500px) {
+  mat-card.register.mat-card {
+    width: 450px;
+    left: calc(50% - 225px);
+    top: calc(50% - 275px);
+  }
+}
+
+
+div.background {
+  width: 100%;
+  height: 100vh;
+  background: url(../../../assets/images/Backgrounds/back-login.jpg) no-repeat top center scroll;
+  background-size: cover;
+  display: table;
+
+  h1 {
+    padding-left: 18px;
+  }
+}
+
+mat-card.mat-card {
+  padding: 0px;
+}
+
+.register.mat-card {
+  position: absolute;
+  width: 300px;
+  left: calc(50% - 150px);
+  top: calc(50% - 275px);
+  background: rgba(66, 66, 66, 0.8);
+}
+
+mat-card.register img {
+  width: 150px;
+  height: 150px;
+  margin: 0 auto;
+  display: flex;
+}
+
+mat-card-header.register.mat-card-header {
+  display: initial;
+}
+
+h1.register {
+  text-align: center;
+  margin: 0px;
+}
+
+.register {
+  text-align: center;
+  padding: 16px 0;
+}
+
+mat-horizontal-stepper.mat-stepper-horizontal {
+  margin: 0 20px;
+}
+
+mat-radio-button.mat-radio-button {
+  display: inline-block;
+  margin: 20px 5px;
+}
+
+.text-sex {
+  font-size: 18px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+mat-spinner.mat-spinner, .mat-progress-spinner svg {
+  width: 34px !important;
+  height: 34px !important;
+  display: inline-block;
+  padding: 7px;
+}

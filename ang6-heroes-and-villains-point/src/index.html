@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Language" content="pt-br">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Point dos Heróis e Vilões</title>
+    <base href="/">
+    <link rel="shortcut icon" href="assets/images/Icons/comic-icon.ico" type="image/x-icon" />
+    <link href="https://fonts.googleapis.com/css?family=Marvel:300,400,500" rel="stylesheet">
+    <style>
+      .back-img {
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+        text-align: center;
+        top: calc(50% - 140px);
+        position: fixed;
+      }
+      img.loading {
+        border-radius: 50%;
+        height: 280px;
+        width: 280px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <app-root>
+      <div class="back-img">
+        <img class="loading" src="assets/images/marvel_loader.gif">
+      </div>
+    </app-root>
+  </body>
+</html>

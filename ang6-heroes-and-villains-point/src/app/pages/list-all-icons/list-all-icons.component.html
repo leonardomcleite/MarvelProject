@@ -1,0 +1,30 @@
+<mat-card>
+  <mat-card-title>
+    <span>Catálogo de Icones</span>
+  </mat-card-title>
+  <mat-card-content>
+    <div>
+      <!-- <mat-radio-group [(ngModel)]="optionSelected" >
+        <mat-radio-button [value]="option" [checked]="optionSelected === option" *ngFor="let option of options">
+          <span class="text-status">{{option}}</span>
+        </mat-radio-button>
+      </mat-radio-group> -->
+      <mat-form-field>
+        <input type="text" matInput placeholder="Buscar ícone" [(ngModel)]="word" (keyup)="findIcon(word)" name="word">
+      </mat-form-field>
+    </div>
+    <mat-divider></mat-divider><br>
+    <div *ngIf="optionSelected === 'Icones Material'" style="display: flow-root;">
+      <div class="div-icons" *ngFor="let icon of iconsMaterial">
+        <mat-icon class="material">{{icon}}</mat-icon>
+        <span class="text-icon">{{icon}}</span>
+      </div>
+    </div>
+    <!-- <div *ngIf="optionSelected === 'Icones FontAwesome'" style="display: flow-root;">
+      <div class="div-icons" *ngFor="let icon of iconsFontAwesome">
+        <fa-icon [icon]="icon"></fa-icon>
+        <span class="text-icon">{{icon}}</span>
+      </div>
+    </div> -->
+  </mat-card-content>
+</mat-card>

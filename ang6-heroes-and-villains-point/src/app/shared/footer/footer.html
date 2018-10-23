@@ -1,0 +1,18 @@
+<footer class="docs-footer">
+  <div class="docs-footer-list">
+    <div class="docs-footer-logo">
+      <div class="footer-logo">
+        <img src="assets/images/Icons/hvp.svg" class="link" (click)="navigationService.openNewTabAndRedirect('http://marvel.com')" style="width: 80px;height: 51px;">
+      </div>
+    </div>
+
+    <div class="docs-footer-version">
+      <span class="version">Versão App: {{versionFront}}</span>
+    </div>
+
+    <div class="docs-footer-copyright">
+      <span>Created by Leonardo M. ©2018.</span>
+      <span class="link" (click)="navigationService.openNewTabAndRedirect('https://developer.marvel.com/')">Data provided by Marvel. © {{year}} MARVEL</span>
+    </div>
+  </div>
+</footer>

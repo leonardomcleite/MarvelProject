@@ -1,0 +1,10 @@
+<start-game *ngIf="stageGame === 0"></start-game>
+<in-game *ngIf="stageGame === 1"></in-game>
+<end-game *ngIf="stageGame === 2"></end-game>
+<game-over *ngIf="stageGame === 3"></game-over>
+<!-- <start-game *ngIf="stageGame === Stage.Start"></start-game>
+<in-game *ngIf="stageGame === Stage.InGame"></in-game>
+<game-over *ngIf="stageGame === Stage.GameOver"></game-over>
+<end-game *ngIf="stageGame === Stage.EndGame"></end-game> -->
+
+<!-- <button mat-button (click)="mudaEstagio()">Alt Stage</button> -->

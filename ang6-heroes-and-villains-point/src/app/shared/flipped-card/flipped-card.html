@@ -1,0 +1,10 @@
+<div class="container-flipped-card" >
+  <div class="flipped-card" [class.rotate-card]="rotate" [ngStyle]="{'height': (height), 'width': (width) }">
+    <div class="side" >
+      <ng-content select="[front]"></ng-content>
+    </div>
+    <div class="side verse">
+      <ng-content select="[verse]"></ng-content>
+    </div>
+  </div>
+</div>

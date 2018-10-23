@@ -1,0 +1,157 @@
+div.backgroung {
+  background-image: url(../../../../assets/images/Game/Mike-Alcantara.jpg);
+  height: 560px;
+  background-size: 100% 100%;
+  margin: 1% 20%;
+  vertical-align: middle;
+
+  h1 {
+    text-shadow: 2px 2px #252424;
+    text-align: center;
+  }
+}
+
+.mat-card-image {
+  width: inherit !important;
+  margin-top: inherit !important;
+  width: inherit !important;
+  margin: inherit !important;
+  min-height: 250px;
+
+  &:first-child {
+    margin-top: 0px;
+  }
+}
+
+mat-card-content.mat-card-content {
+  display: flow-root !important;
+}
+
+.zoom {
+	overflow: hidden;
+  height: 250px;
+  width: 100%;
+}
+
+.zoom img {
+	-moz-transition: all .4s;
+	-webkit-transition: all .4s;
+  transition: all .4s;
+  width: 100%;
+}
+
+.border-bottom-card {
+  height: 7px;
+  content: "";
+  background-color: #F44336;
+  width: 100%;
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  // border-radius: 20px 20px 0 0;
+}
+
+mat-card-header {
+  z-index: 2;
+  padding-top: 14px;
+}
+
+mat-card:hover {
+  cursor: pointer;
+  outline: none;
+  .border-bottom-card {
+    height: 404px;
+    transition: height .4s;
+  }
+  img {
+    -moz-transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+}
+
+.mat-card-content>:last-child:not(.mat-card-footer), .mat-card>:last-child:not(.mat-card-footer) {
+  margin-bottom: 5px !important;
+}
+
+mat-card.mat-card {
+  margin: 16px;
+  width: 236px;
+  padding: 0px;
+}
+
+div.statistics {
+  margin: 5px 0;
+  background-color: #F44336;
+  cursor: pointer;
+  outline: none;
+  &:hover {
+    background-color: darken(#F44336, 20%);
+  }
+}
+
+span.title-statistics {
+  font-size: 14px !important;
+  margin: 0px !important;
+  display: inline-block;
+  font-weight: bold;
+}
+
+mat-card.player1.mat-card.ng-star-inserted, mat-card.player2.mat-card.ng-star-inserted {
+  position: absolute;
+  margin-top: 50px;
+  border-radius: 10px;
+  &.hide {
+    padding: 1px;
+  }
+}
+
+img.img-back-card {
+  margin: 0px !important;
+  padding: 8px 10px;
+  height: 437px;
+  border-radius: 10px;
+}
+
+mat-card-content.mat-card-content {
+  padding: 0 10px;
+}
+
+.center {
+  position: absolute;
+  left: calc(50% - 70px);
+  color: #252424;
+  font-size: 24px;
+  font-weight: bold;
+  width: 150px;
+  text-align: center;
+  top: 35%;
+}
+
+span.time-rest {
+  font-size: 36px !important;
+  font-weight: bold;
+}
+.timer {
+
+}
+.cards-deck {
+  // position: absolute;
+  // top: 150%;
+  padding-top: 10%;
+}
+
+.loader {
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  display: flex;
+  line-height: 800px;
+  padding-top: 25%;
+}
+
+.flipped {
+  position: absolute;
+  top: 55px;
+  // transition: all 1s ease-in-out;
+}

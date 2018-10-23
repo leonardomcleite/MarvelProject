@@ -1,0 +1,45 @@
+.box {
+  background: #fff;
+  width: 350px;
+  margin: 0 auto;
+  position: relative;
+  padding: 50px 25px 25px 25px;
+}
+
+.box h1 {
+  background: #222;
+  color: #fff;
+  margin: 0;
+  padding: 10px 0;
+  text-align: center;
+  font-size: 18px;
+  position: absolute;
+  left: -15px;
+  right: -15px;
+  top: 15px;
+}
+
+.box h1:after,
+.box h1:before {
+  display: block;
+  position: absolute;
+  width: 0;
+  height: 0;
+  content: "";
+  top: 100%;
+
+  border-style: solid;
+  border-color: transparent;
+}
+
+.box h1:before {
+  left: 0;
+  border-width: 0 15px 5px 0;
+  border-right-color: #444;
+}
+
+.box h1:after {
+  border-width: 5px 15px 0 0;
+  border-top-color: #444;
+  right: 0;
+}

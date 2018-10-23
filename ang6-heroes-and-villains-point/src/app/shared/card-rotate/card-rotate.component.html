@@ -1,0 +1,10 @@
+<div class="scene">
+  <div class="card" [class.is-flipped]="flip">
+    <div class="card__face card__face--front" *ngIf="!flipTimeOut">
+      <ng-content select="[front]"></ng-content>
+    </div>
+    <div class="card__face card__face--front" *ngIf="!flipTimeOut">
+      <ng-content select="[back]"></ng-content>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,84 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.is-mobile .toolbar {
+  position: fixed;
+  z-index: 2;
+}
+
+.sidenav-container {
+  flex: 1;
+}
+
+.is-mobile .sidenav-container {
+  flex: 1 0 auto;
+}
+
+mat-sidenav.mat-sidenav {
+  max-width: 290px;
+}
+
+.scroll-area {
+  // overflow: scroll;
+}
+
+.header-simple {
+  height: 48px;
+  line-height: 48px;
+}
+
+.image {
+  border: 12px solid #424242;
+  border-radius: 50%;
+  width: 130px;
+  height: 130px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+img {
+  width: 106px;
+  height: 106px;
+  border-radius: 48%;
+  background: #424242;
+}
+
+.user {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.name {
+  display: block;
+}
+
+.email {
+  font-size: 16px !important;
+  color: rgba(255, 255, 255, 0.4) !important;
+  display: block;
+}
+
+.divisor {
+  background: #424242;
+  height: 65px;
+  top: -65px;
+  position: relative;
+  z-index: -1;
+}
+
+mat-accordion.mat-accordion {
+  position: relative;
+  top: -65px;
+}
+
+mat-icon.menu-icon {
+  line-height: 48px;
+  margin: 0 10px 0 0;
+}

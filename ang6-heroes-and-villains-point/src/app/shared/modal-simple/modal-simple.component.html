@@ -1,0 +1,11 @@
+<modal-dialog [modalTitle]="data.title">
+  <div class="form-container" modal-content>
+    <p style="font-size: 20px;">{{data?.message}}</p>
+    <div [innerHtml]="htmlContent" style="font-size: 20px;"></div>
+  </div>
+  
+  <div modal-actions>
+    <button mat-raised-button color="accent" (click)="onSubmit()">Ok</button>
+    <button mat-stroked-button cdkFocusInitial color="accent" (click)="onClose()">Cancelar</button>
+  </div>
+</modal-dialog>

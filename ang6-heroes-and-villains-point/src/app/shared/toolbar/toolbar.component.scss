@@ -1,0 +1,63 @@
+.mat-toolbar-row,
+.mat-toolbar-single-row {
+  height: 48px;
+  padding: 0px;
+  &.notBackIcon {
+    padding: 0 16px;
+  }
+}
+
+.mat-toolbar-multiple-rows {
+  min-height: 48px;
+}
+
+.example-is-mobile .example-toolbar {
+  position: fixed;
+  z-index: 2;
+}
+
+mat-toolbar-row {
+  z-index: 2;
+  display: block;
+}
+
+h1.example-app-name {
+  margin-left: 8px;
+}
+
+div.tools-right {
+  float: right;
+  line-height: 42px;
+  padding-right: 10px;
+}
+
+div.tools-left {
+  float: left;
+  line-height: 42px;
+}
+
+p {
+  .title {
+    font-weight: bold;
+  }
+  margin: 10px;
+  font-size: 20px;
+} 
+
+span.text {
+  color: #b0bec5;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.divider-icons {
+  position: absolute;
+  font-size: 39px;
+  font-weight: 100;
+  top: 2px;
+  height: 40px;
+}
+
+.btn-favorite {
+  padding-left: 16px;
+}

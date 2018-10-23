@@ -1,0 +1,11 @@
+<div *ngIf="isLogin">
+  <ng-container *ngTemplateOutlet="template"></ng-container>
+</div>
+
+<sidenav *ngIf="!isLogin">
+  <ng-container *ngTemplateOutlet="template"></ng-container>
+</sidenav>
+
+<ng-template #template let-lessonsCounter="template">
+  <ng-content></ng-content>
+</ng-template>

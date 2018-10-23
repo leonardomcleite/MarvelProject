@@ -1,0 +1,15 @@
+.tooltip {
+  background: #bf3605;
+  color: #fff;
+  padding: 15px;
+  position: relative;
+  width: 200px;
+}
+
+.tooltip:before {
+  border: 10px solid transparent;
+  border-right-color: #bf3605;
+  content: "";
+  left: -20px;
+  position: absolute;
+}

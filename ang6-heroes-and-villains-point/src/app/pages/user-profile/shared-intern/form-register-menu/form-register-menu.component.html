@@ -1,0 +1,30 @@
+<modal-dialog modalTitle="Cadastro de Menus">
+  <div class="form-container" modal-content>
+    <form [formGroup]="formRegister">
+      <mat-form-field>
+        <input matInput placeholder="Titulo Menu" formControlName="nameMenu" required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Rota" formControlName="route" required>
+      </mat-form-field>
+      <div class="input-icon">
+        <mat-form-field>
+          <mat-icon class="mat-18">{{formRegister.get('icon').value}}</mat-icon>
+          <input type="text" matInput placeholder="Icone" formControlName="icon" [matAutocomplete]="autoGroup">
+          <mat-autocomplete #autoGroup="matAutocomplete">
+            <mat-optgroup *ngFor="let group of iconClassification | async" [label]="group.letter">
+              <mat-option *ngFor="let name of group.names" [value]="name">
+                {{name}}
+              </mat-option>
+            </mat-optgroup>
+          </mat-autocomplete>
+        </mat-form-field>
+      </div>
+    </form>
+  </div>
+  
+  <div modal-actions>
+    <button mat-raised-button color="accent" (click)="onSubmit()" [disabled]="!formRegister.valid">Enviar</button>
+    <button mat-stroked-button cdkFocusInitial color="accent" (click)="onClose()">Cancelar</button>
+  </div>
+</modal-dialog>

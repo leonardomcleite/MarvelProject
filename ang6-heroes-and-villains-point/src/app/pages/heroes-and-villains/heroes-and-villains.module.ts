@@ -1,0 +1,41 @@
+import { CommonModule } from '@angular/common';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { MatButtonModule, MatCardModule, MatDialogModule, MatExpansionModule, MatIconModule, MatListModule, MatRadioModule, MatSnackBarModule, MatTabsModule, MatProgressBarModule, MatTooltipModule } from '@angular/material';
+import { GooeyRingLoaderModule } from '../../shared/loaders/gooey-ring/gooey-ring-loader.module';
+import { ModalDialogModule } from '../../shared/modal-dialog/modal-dialog.module';
+import { ToolbarModule } from '../../shared/toolbar/toolbar.module';
+import { HeroesAndVillainsRoutingModule } from './heroes-and-villains-routing.module';
+import { HeroesAndVillainsComponent } from './heroes-and-villains.component';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { ErrorModule } from '../../shared/error/error.module';
+import { FilterAndSearchBarModule } from '../../shared/filter-and-search-bar/filter-and-search-bar.module';
+
+@NgModule({
+  imports: [
+    CommonModule,
+    HeroesAndVillainsRoutingModule,
+    ModalDialogModule,
+    GooeyRingLoaderModule,
+    ErrorModule,
+    ToolbarModule,
+    FilterAndSearchBarModule,
+    InfiniteScrollModule,
+
+    MatButtonModule,
+    MatCardModule,
+    MatExpansionModule,
+    MatIconModule,
+    MatListModule,
+    MatRadioModule,
+    MatDialogModule,
+    MatSnackBarModule,
+    MatTabsModule,
+    MatProgressBarModule,
+    MatTooltipModule
+  ],
+  declarations: [
+    HeroesAndVillainsComponent
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+})
+export class HeroesAndVillainsModule { }

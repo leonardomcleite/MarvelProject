@@ -1,0 +1,76 @@
+header {
+  height: 210px;
+  background-size: 100% 147%;
+  margin-bottom: 50px;
+  text-align: center;
+  line-height: 150px;
+
+  h1 {
+    text-shadow: 2px 2px #787878;
+  }
+}
+
+.mat-card-image {
+  width: inherit !important;
+  margin-top: inherit !important;
+  width: inherit !important;
+  margin: inherit !important;
+  min-height: 300px;
+}
+
+.mat-card-image:first-child {
+  margin-top: 0px;
+}
+
+.back-page {
+  left: 20px;
+  top: 90px;
+  position: absolute;
+}
+
+.zoom {
+  overflow: hidden;
+  height: 300px;
+  width: 100%;
+}
+
+.zoom img {
+  -moz-transition: all .4s;
+  -webkit-transition: all .4s;
+  transition: all .4s;
+  width: 100%;
+}
+
+.border-bottom-card {
+  height: 4px;
+  content: "";
+  background-color: #F44336;
+  width: 100%;
+  position: absolute;
+  z-index: 0;
+  top: 0;
+}
+
+mat-card.mat-card {
+  margin: 16px;
+  width: 236px;
+  padding: 24px 0;
+  width: calc(100% - 32px);
+  top: -117px;
+  padding: 0px; 
+}
+
+mat-card-title.mat-card-title {
+  min-height: 34px;
+  margin-bottom: 0px;
+  padding: 16px;
+}
+
+mat-card-content.mat-card-content {
+  padding: 10px;
+}
+
+mat-card-actions.mat-card-actions {
+  margin: 0px;
+  padding: 8px 0;
+}
