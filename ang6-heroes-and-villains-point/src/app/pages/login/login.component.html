@@ -7,7 +7,7 @@
     <mat-card-content class="login">
       <form [formGroup]="dataUser" *ngIf="status === 1" [@slide]>
         <mat-form-field>
-          <input type="text" matInput placeholder="Usuário" formControlName="user" (keyup)="changeForm()">
+          <input type="text" matInput placeholder="Usuário" formControlName="user" (keyup)="changeForm()" #user>
           <mat-hint align="end">6 - ∞</mat-hint>
         </mat-form-field>
         <div class="or-divider">

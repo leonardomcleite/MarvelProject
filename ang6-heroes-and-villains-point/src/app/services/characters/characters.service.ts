@@ -47,4 +47,8 @@ export class CharactersService {
     return this.restClientService.delete(this.baseBackEnd + REST_PATH.character.delete + '/' + id);
   }
 
+  test() {
+    return this.restClientService.get('https://dadosabertos.camara.leg.br/api/v2/deputados?ordem=ASC&ordenarPor=nome');
+  }
+
 }

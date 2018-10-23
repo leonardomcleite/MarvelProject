@@ -1,10 +1,10 @@
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { OptionsNotification } from '../../models/options-notifications.model';
 import { NotificationService } from '../../services/base-service/notification.service';
 import { GuardService } from '../../services/guard/guard.service';
 import { UsersService } from '../../services/users/users.service';
-import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -18,16 +18,16 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
         overflow: 'hidden'
       })),
       transition(':enter', [
-          animate('500ms ease-in-out', style({
-              'height': '*',
-              overflow: 'hidden'
-          }))
+        animate('500ms ease-in-out', style({
+            'height': '*',
+            overflow: 'hidden'
+        }))
       ]),
       transition(':leave', [
-          animate('500ms ease-in-out', style({
-              'height': '0px',
-              overflow: 'hidden'
-          }))
+        animate('500ms ease-in-out', style({
+            'height': '0px',
+            overflow: 'hidden'
+        }))
       ])
     ])
   ],
