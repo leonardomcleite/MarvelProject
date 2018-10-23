@@ -1,64 +1,46 @@
 package br.com.hvp.service;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
+import br.com.hvp.business.MenuBusiness;
 import br.com.hvp.dto.MenuDTO;
-import br.com.hvp.entity.MenuEntity;
-import br.com.hvp.mapper.BeanMapper;
-import br.com.hvp.repository.MenuRepository;
+import br.com.hvp.service.interfaces.MenuInterface;
 
-@Service
-public class MenuService {
+@RestController
+@CrossOrigin
+public class MenuService implements MenuInterface {
 
 	@Autowired
-	MenuRepository menuRepository;
-	
-	@PersistenceContext	
-	private EntityManager entityManager;
+	private MenuBusiness menuBusiness;
 
-	public void createMenu(MenuDTO menu) {
-		MenuEntity menuEntity = new MenuEntity();
-		BeanMapper beanMapper = new BeanMapper();
-		menuEntity = beanMapper.map(menu, MenuEntity.class);
-
-		menuRepository.save(menuEntity);
+	@Override
+	public void createMenu(@RequestBody MenuDTO menu) throws Exception {
+		this.menuBusiness.createMenu(menu);
 	}
 
-	public void createMenuWithList(List<MenuDTO> menus) {
-		List<MenuEntity> listMenuEntity = new ArrayList<MenuEntity>();
-		BeanMapper beanMapper = new BeanMapper();
-		listMenuEntity = beanMapper.mapList(menus, MenuEntity.class);
-
-		menuRepository.saveAll(listMenuEntity);
+	@Override
+	public void createMenuWithList(@RequestBody List<MenuDTO> menus) throws Exception {
+		this.menuBusiness.createMenuWithList(menus);
 	}
 
-	public List<MenuDTO> listMenus() {
-		BeanMapper beanMapper = new BeanMapper();
-		return beanMapper.mapList(menuRepository.findAll(), MenuDTO.class);
+	@Override
+	public List<MenuDTO> listMenus() throws Exception {
+		return this.menuBusiness.listMenus();
 	}
 	
-	public void updateMenu(MenuDTO menu) {
-		Optional<MenuEntity> menuOptional = menuRepository.findById(menu.getId());
-		
-		if (menuOptional.isPresent()) {
-			BeanMapper beanMapper = new BeanMapper();
-			MenuEntity menuEntity = beanMapper.map(menu, MenuEntity.class);
-			menuRepository.save(menuEntity);
-		}
+	@Override
+	public void updateMenu(@RequestBody MenuDTO menu) throws Exception {
+		this.menuBusiness.updateMenu(menu);
 	}
-	
-	public void deleteMenu(List<MenuDTO> menus) {
-		BeanMapper beanMapper = new BeanMapper();
-		List<MenuEntity> menuEntity = beanMapper.mapList(menus, MenuEntity.class);
-		menuRepository.deleteAll(menuEntity);
+
+	@Override
+	public void deleteMenus(@RequestBody List<MenuDTO> menus) throws Exception {
+		this.menuBusiness.deleteMenu(menus);
 	}
 
 }

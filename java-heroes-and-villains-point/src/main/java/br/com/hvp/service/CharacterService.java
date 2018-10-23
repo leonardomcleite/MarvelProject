@@ -1,39 +1,39 @@
 package br.com.hvp.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
+import br.com.hvp.business.CharacterBusiness;
 import br.com.hvp.dto.CharacterDTO;
 import br.com.hvp.dto.MessageDTO;
-import br.com.hvp.entity.CharacterEntity;
-import br.com.hvp.mapper.BeanMapper;
-import br.com.hvp.repository.CharacterRepository;
+import br.com.hvp.service.interfaces.CharacterInterface;
 
-@Service
-public class CharacterService {
+@RestController
+@CrossOrigin
+public class CharacterService implements CharacterInterface {
 
 	@Autowired
-	CharacterRepository characterRepository;
+	private CharacterBusiness characterBusiness;
 
-	public MessageDTO createCharacters(List<CharacterDTO> character) {
-		List<CharacterEntity> characterEntity = new ArrayList<CharacterEntity>();
-		BeanMapper beanMapper = new BeanMapper();
-		characterEntity = beanMapper.mapList(character, CharacterEntity.class);
-		
-		try {
-			characterRepository.saveAll(characterEntity);
-		} catch (Exception e) {
-			return new MessageDTO(0, "Falha ao Salvar Personagens", "error");
-		}
-		return new MessageDTO(200, "Personagens Criados Com Sucesso", "success");
+	@Override
+	public MessageDTO createCharacters(@RequestBody List<CharacterDTO> characters) throws Exception {
+		return this.characterBusiness.createCharacters(characters);
 	}
 
-	public List<CharacterDTO> listCharacters() {
-		BeanMapper beanMapper = new BeanMapper();
-		return beanMapper.mapList(characterRepository.findAll(), CharacterDTO.class);
+	@Override
+	public void listCharacters() throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deleteCharacter() throws Exception {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
