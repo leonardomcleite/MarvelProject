@@ -1,5 +1,6 @@
 export class UserPersonalData {
 
+  id: number;
   name: string;
   dtBirth: string;
   sex: string;

@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatSnackBar } from '@angular/material';
+import { PlayedModel } from 'src/app/models/played.model';
+import { UserPersonalData } from 'src/app/models/user-personal-data.model';
+import { MarvelHeroesService } from 'src/app/services/marvel-heroes/marvel-heroes.service';
 import { OptionsNotification } from '../../../models/options-notifications.model';
-import { ParamsPagination } from '../../../models/params-pagination.model';
 import { NotificationService } from '../../../services/base-service/notification.service';
 import { CharactersService } from '../../../services/characters/characters.service';
 import { GameService } from '../../../services/game/game.service';
 import { DateFormatUtilService } from '../../../shared/utils/date-format/date-format-util.service';
 import { ScrolledService } from '../../../shared/utils/scrolled/scrolled.service';
-import { MarvelHeroesService } from 'src/app/services/marvel-heroes/marvel-heroes.service';
+import { ParamsPagination } from 'src/app/models/params-pagination.model';
 
 enum Stage {
   Start = 0,
@@ -22,6 +24,14 @@ enum Stage {
   styleUrls: ['./in-game.component.scss']
 })
 export class InGameComponent implements OnInit {
+
+  // userLogged: UserPersonalData;
+  // players: any[] = [];
+  // numberCards = 10;
+  // loading: boolean;
+  // error: boolean;
+  // isMyTurn: boolean;
+  // lobby: any;
 
   playerOne: any[] = [];
   playerTwo: any[] = [];
@@ -48,6 +58,110 @@ export class InGameComponent implements OnInit {
     public notificationService: NotificationService,
     public marvelHeroesService: MarvelHeroesService,
   ) {}
+
+  // ngOnInit() {
+  //   this.userLogged = JSON.parse(sessionStorage.getItem('Perfis'));
+  //   this.isMyTurn = this.gameService.roundPlayer(this.userLogged);
+  //   this.buildLobby();
+  // }
+
+  // buildLobby() {
+  //   this.gameService.enterGame(this.userLogged).toPromise().then((returnQuery: any) => {
+  //     this.lobby = returnQuery;
+  //   }).catch (error => {
+  //     this.error = true;
+  //   });
+  // }
+
+  // imgLoad(thumbnail?: any) {
+  //   if (thumbnail === null || thumbnail === undefined) {
+  //     return '../../../assets/images/image_not_available.jpg';
+  //   }
+  //   if (thumbnail.path.includes('image_not_available')) {
+  //     return '../../../assets/images/image_not_available.jpg';
+  //   } else {
+  //     return thumbnail.path + '.' + thumbnail.extension;
+  //   }
+  // }
+
+  // makeMove(feature: String) {
+  //   this.gameService.roundPlayer(this.userLogged).toPromise().then(returnQuery => {
+  //     this.isMyTurn = returnQuery;
+  //     if (this.isMyTurn) {
+  //       this.players.forEach(player => {
+  //         if (player.id !== this.userLogged.id) {
+  //           player.side = !player.side;
+  //         }
+  //       });
+  //       const played = new PlayedModel(feature, this.userLogged);
+  //       this.gameService.makeMove(played).toPromise().then(() => {
+  //         this.gameService.roundWinner(this.userLogged).toPromise().then(returnQueryWinner => {
+  //           switch (returnQueryWinner) {
+  //             case 'win':
+  //               this.playerResult('win');
+  //               break;
+  //             case 'lost':
+  //               this.playerResult('lost');
+  //               break;
+  //             case 'tie':
+  //               this.endedInATie();
+  //               break;
+  //           }
+  //         });
+  //       });
+  //     }
+  //   });
+  // }
+
+  // endedInATie(): any {
+  //   this.gameService.stageGame().toPromise().then(returnQuery => {
+  //     this.gameService.turnGame = returnQuery;
+  //   });
+  //   if (this.isMyTurn) {
+  //     this.players.forEach(player => {
+  //       if (player.id !== this.userLogged.id) {
+  //         player.side = !player.side;
+  //       }
+  //     });
+  //   }
+  //   const messageOptions: OptionsNotification = new OptionsNotification(`<span class="notification-content">Deu EMPATE!</span>`, 'warning', `<span style="font-weight: bold">OK</span>`, true, 'bottom', 'center', 2000);
+  //   this.notificationService.notification(messageOptions);
+  // }
+
+  // playerResult(statusGame: any): any {
+  //   this.gameService.stageGame().toPromise().then(returnQuery => {
+  //     this.gameService.turnGame = returnQuery;
+  //   });
+  //   this.players.forEach(player => {
+  //     player.side = !player.side;
+  //   });
+  //   let messageOptions: OptionsNotification;
+  //   if (statusGame === 'win') {
+  //     messageOptions = new OptionsNotification(`<span class="notification-content">Você VENCEU esta rodada!</span>`, 'success', `<span style="font-weight: bold">OK</span>`, true, 'bottom', 'center', 2000);
+  //     this.notificationService.notification(messageOptions);
+  //     setTimeout(() => {
+  //       if (this.isMyTurn) {
+  //         this.players.forEach(player => {
+  //           if (player.id !== this.userLogged.id) {
+  //             player.side = !player.side;
+  //           }
+  //         });
+  //       }
+  //     }, 1000);
+  //   } else {
+  //     messageOptions = new OptionsNotification(`<span class="notification-content">Você PERDEU esta rodada!</span>`, 'error', `<span style="font-weight: bold">OK</span>`, true, 'bottom', 'center', 2000);
+  //     this.notificationService.notification(messageOptions);
+  //     setTimeout(() => {
+  //       if (this.isMyTurn) {
+  //         this.players.forEach(player => {
+  //           if (player.id !== this.userLogged.id) {
+  //             player.side = !player.side;
+  //           }
+  //         });
+  //       }
+  //     }, 1000);
+  //   }
+  // }
 
   ngOnInit() {
     this.dataCharacters = this.charactersService.getHeroes();
@@ -91,7 +205,7 @@ export class InGameComponent implements OnInit {
               heroe.intelligence = statistics.intelligence * 1;
               heroe.speed = statistics.speed * 1;
               heroe.strength = statistics.strength * 1;
-              heroe.biografy = statistics.biografy * 1;
+              heroe.biography = statistics.biography;
               cont++;
               heroes.push(heroe);
             }

@@ -94,7 +94,7 @@ export class HeroesAndVillainsComponent implements OnInit, OnDestroy {
             heroe.intelligence = statistics.intelligence;
             heroe.speed = statistics.speed;
             heroe.strength = statistics.strength;
-            heroe.biografy = statistics.biografy;
+            heroe.biography = statistics.biography;
             break;
           }
         }

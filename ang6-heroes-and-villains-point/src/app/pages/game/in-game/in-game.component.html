@@ -1,15 +1,78 @@
+<!-- <div class="backgroung">
+  <div class="loader" *ngIf="loading">
+    <mat-spinner></mat-spinner>
+  </div>
+  <div *ngIf="!loading">
+    <div *ngFor="let player of players; let i = index">
+      <flipped-card class="flipped" 
+      *ngFor="let card of player.cards; let j = index"
+      [id]="card.name"
+      [ngStyle]="{'left' : (card.position), 'z-index': (player.cards.length - i)}"
+      [width]="'268px'"
+      [height]="'462px'"
+      [(rotate)]="card.side">
+        <mat-card front [class]="'card' + i" >
+          <mat-card-header>
+            <mat-card-title>{{card.Name}}</mat-card-title>
+          </mat-card-header>
+          <div class="zoom">
+            <img mat-card-image [src]="imgLoad(card?.thumbnail)">
+          </div>
+          <mat-card-content>
+            <div class="statistics" (click)="makeMove('intelligence')">
+              <span class="title-statistics">Inteligência: </span>
+              <span class="value">{{card?.classification?.intelligence}}</span>
+            </div>
+            <div class="statistics" (click)="makeMove('strength')">
+              <span class="title-statistics">Força: </span>
+              <span class="value">{{card?.classification?.strength}}</span>
+            </div>
+            <div class="statistics" (click)="makeMove('speed')">
+              <span class="title-statistics">Rapidez: </span>
+              <span class="value">{{card?.classification?.speed}}</span>
+            </div>
+            <div class="statistics" (click)="makeMove('durability')">
+              <span class="title-statistics">Durabilidade: </span>
+              <span class="value">{{card?.classification?.durability}}</span>
+            </div>
+            <div class="statistics" (click)="makeMove('energy')">
+              <span class="title-statistics">Energia: </span>
+              <span class="value">{{card?.classification?.energy}}</span>
+            </div>
+            <div class="statistics" (click)="makeMove('combat')">
+              <span class="title-statistics">Combate: </span>
+              <span class="value">{{card?.classification?.combat}}</span>
+            </div>
+          </mat-card-content>
+        </mat-card>
+        <mat-card verse [class]="'player' + i + 'back-card'">
+          <img class="img-back-card" mat-card-image src="assets/images/image_not_available.jpg">
+        </mat-card>
+      </flipped-card>
+    </div>
+
+    <div class="center">
+      <div class="timer">
+        <span class="time-rest">{{timeLeft}}</span>
+      </div>
+      <div class="cards-deck">
+        Cartas no Baralho (P1: {{playerOne.length}}/ P2: {{playerTwo.length}})
+      </div>
+      <button mat-raised-button color="primary" (click)="quitGame()">Quit Game</button>
+    </div>
+
+    
+  </div>
+</div> -->
+
 <div class="backgroung">
   <div class="loader" *ngIf="loading">
     <mat-spinner></mat-spinner>
   </div>
   <div *ngIf="!loading">
-    <flipped-card class="flipped" *ngFor="let player1 of playerOne; let i = index"
-    [id]="player1.name"
-    [ngStyle]="{'left' : (player1.position), 'z-index': (playerOne.length - i)}"
-    [width]="'268px'"
-    [height]="'462px'"
-    [(rotate)]="player1.side">
-      <mat-card front class="player1" >
+    <flipped-card class="flipped" *ngFor="let player1 of playerOne; let i = index" [id]="player1.name" [ngStyle]="{'left' : (player1.position), 'z-index': (playerOne.length - i)}"
+      [width]="'268px'" [height]="'462px'" [(rotate)]="player1.side">
+      <mat-card front class="player1">
         <mat-card-header>
           <mat-card-title>{{player1.Name}}</mat-card-title>
         </mat-card-header>
@@ -58,12 +121,9 @@
       <button mat-raised-button color="primary" (click)="quitGame()">Quit Game</button>
     </div>
 
-    <flipped-card class="flipped" *ngFor="let player2 of playerTwo; let i = index"
-    [ngStyle]="{'left' : (player2.position), 'z-index': (playerTwo.length - i)}"
-    [width]="'268px'"
-    [height]="'462px'"
-    [(rotate)]="player2.side">
-      <mat-card front class="player2" >
+    <flipped-card class="flipped" *ngFor="let player2 of playerTwo; let i = index" [ngStyle]="{'left' : (player2.position), 'z-index': (playerTwo.length - i)}"
+      [width]="'268px'" [height]="'462px'" [(rotate)]="player2.side">
+      <mat-card front class="player2">
         <mat-card-header>
           <mat-card-title>{{player2.Name}}</mat-card-title>
         </mat-card-header>
@@ -97,7 +157,7 @@
           </div>
         </mat-card-content>
       </mat-card>
-      <mat-card verse class="player2 back-card" >
+      <mat-card verse class="player2 back-card">
         <img class="img-back-card" mat-card-image src="assets/images/image_not_available.jpg">
       </mat-card>
     </flipped-card>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { GameService } from '../../../services/game/game.service';
 
 @Component({
@@ -8,8 +8,6 @@ import { GameService } from '../../../services/game/game.service';
   styleUrls: ['./start-game.component.scss']
 })
 export class StartGameComponent {
-
-  color = 'green';
 
   constructor(
     public gameService: GameService

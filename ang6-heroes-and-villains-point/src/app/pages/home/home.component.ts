@@ -14,10 +14,14 @@ export class HomeComponent implements OnInit {
   constructor(
     private snackbar: MatSnackBar,
     private copier: CopierService,
+    public charactersService: CharactersService
   ) { }
 
   ngOnInit() {
     this.loader = false;
+    // this.charactersService.test().toPromise().then(retorno => {
+    //   console.log(retorno);
+    // });
   }
 
   copySource(text: string) {
