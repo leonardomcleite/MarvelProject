@@ -1,10 +1,18 @@
+@media only screen and (min-width: 450px) {
+  header {
+    height: 210px !important;
+    margin-bottom: 50px !important;
+    line-height: 210px !important;
+  }
+}
+
 header {
-  height: 210px;
+  height: 155px;
+  margin-bottom: 40px;
+  line-height: 60px;
   background: url(../../../assets/images/Headers/header-heroes3.jpg) no-repeat;
   background-size: 100% 147%;
-  margin-bottom: 50px;
   text-align: center;
-  line-height: 210px;
   h1 {
     text-shadow: 2px 2px #787878;
   }
