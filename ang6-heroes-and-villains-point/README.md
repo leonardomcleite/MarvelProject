@@ -33,7 +33,7 @@ Abaixo estão as versões instaladas que funcionam:
 ## Começando
 Instalando o projeto:
 
-    # Se ainda não tem nenhum repositório local, crie uma pasta, abra-a no terminal e digite o comando abaixo:
+    # Se ainda não tem nenhum repositório local: crie uma pasta, abra-a no terminal e digite o comando abaixo:
     $ git init
 
     Depois:
