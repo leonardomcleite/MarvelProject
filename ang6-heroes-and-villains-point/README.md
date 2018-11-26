@@ -1,27 +1,43 @@
-# Ang6VisualizacaoDeDados
+# Point dos Heróis e Vilões
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.5.
+## Sobre o projeto
+Este projeto foi criado para um mini-TCC da faculdade. Onde é possivel conhecer todos os heróis da Marvel. Iterar com um game (Super Trunfo Marvel), onde há uma batalha de características.
 
-## Development server
+## Telas
+#### Página Inicial
+![alt text](src/assets/images/Screenshot/homepage.png)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+#### Personagens
+![alt text](src/assets/images/Screenshot/personagens.png)
 
-## Code scaffolding
+#### Historias em Quadrinhos, Series e Histórias
+![alt text](src/assets/images/Screenshot/historias.png)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+#### Jogo
+![alt text](src/assets/images/Screenshot/game.png)
 
-## Build
+#### Estisticas da Aplicação (*Dados Fake)
+![alt text](src/assets/images/Screenshot/estatisticas.png)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## Requisitos
 
-## Running unit tests
+Instale o servidor [Node Server](http://nodejs.org/) juntamente com o gerenciador de dependencias [NPM](https://npmjs.org/).
+Abaixo estão as versões instaladas que funcionam:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+    $ node --version
+    v9.6.1
 
-## Running end-to-end tests
+    $ npm --version
+    5.6.0
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+## Começando
+Instalando o projeto:
 
-## Further help
+    # Se ainda não tem nenhum repositório local, crie uma pasta, abra-a no terminal e digite o comando abaixo:
+    $ git init
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+    Depois:
+    $ git clone https://github.com/leonardomcleite/ang6-heroes-and-villains-point.git
+    $ cd ang6-heroes-and-villains-point
+    $ npm install
+    $ npm start

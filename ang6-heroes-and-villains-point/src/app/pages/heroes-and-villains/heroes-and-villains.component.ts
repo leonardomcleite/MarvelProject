@@ -1,4 +1,4 @@
-import { state, style, trigger } from '@angular/animations';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog, MatSnackBar, MatSnackBarConfig } from '@angular/material';
 import { Subscription } from 'rxjs/internal/Subscription';
@@ -23,6 +23,16 @@ import { ScrolledService } from '../../shared/utils/scrolled/scrolled.service';
         'z-index': '999',
         'width': '100%',
       })),
+    ]),
+    trigger('animationCard', [
+      transition(':enter', [
+        style({ transform: 'translateY(50%)' }),
+        animate('.3s', style({ transform: 'translateY(0%)' }))
+      ]),
+      transition(':leave', [
+        style({ transform: 'translateY(0%)' }),
+        animate('.3s', style({ transform: 'translateY(50%)' }))
+      ])
     ])
   ],
 })
