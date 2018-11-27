@@ -36,8 +36,14 @@ Instalando o projeto:
     # Se ainda não tem nenhum repositório local: crie uma pasta, abra-a no terminal e digite o comando abaixo:
     $ git init
 
-    Depois:
-    $ git clone https://github.com/leonardomcleite/ang6-heroes-and-villains-point.git
-    $ cd ang6-heroes-and-villains-point
+#### Front:
+    $ git clone https://github.com/leonardomcleite/MarvelProject.git
+    $ cd MarvelProject/ang6-heroes-and-villains-point
+    $ npm install
+    $ npm start
+
+#### Back:
+    $ git clone https://github.com/leonardomcleite/MarvelProject.git
+    $ cd MarvelProject/ang6-heroes-and-villains-point
     $ npm install
     $ npm start
