@@ -32,7 +32,6 @@ public class CharacterService implements CharacterInterface {
 
 	@Override
 	public void deleteCharacter() throws Exception {
-		// TODO Auto-generated method stub
 		
 	}
 
