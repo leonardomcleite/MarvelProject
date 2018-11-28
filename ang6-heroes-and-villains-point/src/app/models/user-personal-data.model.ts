@@ -10,8 +10,9 @@ export class UserPersonalData {
   confirmPassword: string;
   cdConfirmation: string;
   profile: any;
+  avatar?: string;
 
-  constructor(name: string, dtBirth: string, sex: string, user: string, email: string, password: string, confirmPassword: string) {
+  constructor(name: string, dtBirth: string, sex: string, user: string, email: string, password: string, confirmPassword: string, avatar?: string) {
     this.name = name;
     this.dtBirth = dtBirth;
     this.sex = sex;
@@ -19,6 +20,7 @@ export class UserPersonalData {
     this.email = email;
     this.password = password;
     this.confirmPassword = confirmPassword;
+    this.avatar = avatar;
   }
 
 }

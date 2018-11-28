@@ -13,6 +13,7 @@ export class GuardService implements CanActivate {
   @Output() isLogin: EventEmitter<any> = new EventEmitter();
   @Output() userError: EventEmitter<any> = new EventEmitter();
   @Output() routerActivated: EventEmitter<any> = new EventEmitter();
+  @Output() changeProfile: EventEmitter<any> = new EventEmitter();
 
   messageOptions: OptionsNotification;
   baseBackEnd: string;

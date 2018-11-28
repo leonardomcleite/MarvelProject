@@ -32,6 +32,9 @@ export class SidenavComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.userLogged = JSON.parse(sessionStorage.getItem('Perfis'));
+    this.guardService.changeProfile.subscribe(profile => {
+      this.userLogged = JSON.parse(sessionStorage.getItem('Perfis'));
+    });
   }
 
   ngOnDestroy(): void {

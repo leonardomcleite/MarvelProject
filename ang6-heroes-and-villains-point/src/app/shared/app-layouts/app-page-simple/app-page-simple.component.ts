@@ -11,6 +11,7 @@ export class AppPageSimpleComponent {
   @Input() principalTitle;
   @Input() colorBackground;
   @Input() imgBackground;
+  @Input() content = true;
 
   constructor() {}
 

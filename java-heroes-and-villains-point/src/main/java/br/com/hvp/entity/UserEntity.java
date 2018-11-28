@@ -51,6 +51,9 @@ public class UserEntity {
 	@Column(name = "STATUS")
 	private int status;
 
+	@Column(name = "AVATAR")
+	private String avatar;
+
 	@ManyToMany(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
 	@JoinTable(name = "USERS_PROFILES", joinColumns = @JoinColumn(name = "ID_USER"), inverseJoinColumns = @JoinColumn(name = "ID_PROFILE"))
 	private List<ProfileEntity> profile = new ArrayList<ProfileEntity>();
@@ -133,6 +136,14 @@ public class UserEntity {
 
 	public void setStatus(int status) {
 		this.status = status;
+	}
+
+	public String getAvatar() {
+		return avatar;
+	}
+
+	public void setAvatar(String avatar) {
+		this.avatar = avatar;
 	}
 
 }

@@ -27,6 +27,10 @@ span {
   font-size: 18px;
 }
 
+* {
+  outline: none !important;
+}
+
 a, p {
   color: #fff;
 }
@@ -67,6 +71,10 @@ a {
 
 a.default {
   text-decoration: underline;
+}
+
+img {
+  cursor: pointer;
 }
 
 .link {

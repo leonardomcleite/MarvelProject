@@ -1,9 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatDialog, MatPaginator, MatTableDataSource } from '@angular/material';
+import { Component, Inject, OnInit } from '@angular/core';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { UserPersonalData } from 'src/app/models/user-personal-data.model';
 import { OptionsNotification } from '../../models/options-notifications.model';
 import { NotificationService } from '../../services/base-service/notification.service';
-import { MenusService } from '../../services/menus/menus.service';
-import { FormRegisterMenuComponent } from './shared-intern/form-register-menu/form-register-menu.component';
+import { GuardService } from 'src/app/services/guard/guard.service';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -14,86 +14,79 @@ import { FormRegisterMenuComponent } from './shared-intern/form-register-menu/fo
 
 export class UserProfileComponent implements OnInit {
 
-  displayedColumns: string[] = ['checkbox', 'nameMenu', 'description', 'route', 'hidden', 'favorite', 'icon'];
-  dataSource: MatTableDataSource < any > ;
-  resultsLength = 0;
-  isLoadingResults = true;
-  checkAll = false;
-  isError: boolean;
-  selected = 0;
-
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  userLogged: UserPersonalData;
 
   constructor(
-    public menusService: MenusService,
     public notificationService: NotificationService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    public guardService: GuardService
   ) {}
 
   ngOnInit() {
-    this.searchData();
-  }
-
-  searchData() {
-    const data = [];
-    this.isError = false;
-    this.isLoadingResults = true;
-    this.menusService.listMenus().toPromise().then(returnQuery => {
-      this.resultsLength = returnQuery.length;
-      returnQuery.forEach(element => {
-        element.checkbox = false;
-      });
-      this.dataSource = new MatTableDataSource(returnQuery);
-      this.dataSource.paginator = this.paginator;
-      this.isLoadingResults = false;
-    }).catch(error => {
-      this.isError = true;
-      this.isLoadingResults = false;
+    this.userLogged = JSON.parse(sessionStorage.getItem('Perfis'));
+    this.guardService.changeProfile.subscribe(profile => {
+      this.userLogged = JSON.parse(sessionStorage.getItem('Perfis'));
     });
-  }
-
-  registerNewMenu() {
-    const dialogRef = this.dialog.open(FormRegisterMenuComponent, {});
-
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        let messageOptions: OptionsNotification;
-        this.menusService.createMenu(result).toPromise().then(returnQuery => {
-          messageOptions = new OptionsNotification(`<span class="notification-content">Menu cadastrado com sucesso!</span>`, 'success', `<span style="font-weight: bold">OK</span>`, true, 'top', 'right', 5000);
-          this.notification(messageOptions);
-          this.searchData();
-        }).catch(error => {
-          messageOptions = new OptionsNotification(`<span class="notification-content">Erro ao criar menu!</span>`, 'error', `<span style="font-weight: bold">OK</span>`, true, 'top', 'right', 5000);
-          this.notification(messageOptions);
-        });
-      }
-    });
-  }
-
-  checkAllMenus() {
-    this.dataSource.data.forEach(element => {
-      element.checkbox = !this.checkAll;
-    });
-    !this.checkAll ? this.selected = this.dataSource.data.length : this.selected = 0;
-  }
-
-  changeSelection() {
-    this.selected = 0;
-    let cont = 0;
-    this.dataSource.data.forEach(element => {
-      if (element.checkbox) {
-        cont++;
-      }
-    });
-    if (cont === 0) {
-      this.checkAll = false;
-    } else {
-      this.checkAll = true;
-    }
-    this.selected = cont;
   }
 
   notification(options: OptionsNotification) {
     this.notificationService.notification(options);
+  }
+
+  openAvatares(avatar: string): void {
+    const dialogRef = this.dialog.open(DialogAvataresComponent, {
+      width: '250px',
+      data: {
+        avatar: avatar
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.userLogged.avatar = result;
+        const messageOptions = new OptionsNotification(`<span class="notification-content">Imagem alterada com sucesso!.</span>`, 'success', null, false, 'top', 'right', 5000);
+        sessionStorage.setItem('Perfis', JSON.stringify(this.userLogged));
+        this.guardService.changeProfile.emit();
+        this.notification(messageOptions);
+      }
+    });
+  }
+}
+
+@Component({
+  // tslint:disable-next-line:component-selector
+  selector: 'dialog-avatares',
+  template: `
+    <h1 mat-dialog-title>Avatares</h1>
+    <div mat-dialog-content>
+      <p>Escolha um Avatar?</p>
+      <div *ngFor="let avatar of avatares" class="content-avatares">
+        <img class="avatar"
+          [src]="'assets/images/Avatares/' + avatar"
+          (click)="data.avatar = avatar">
+        <mat-icon class="icon-checked" *ngIf="data.avatar === avatar">check_circle</mat-icon>
+      </div>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button (click)="onNoClick()">No Thanks</button>
+      <button mat-button [mat-dialog-close]="data.avatar" cdkFocusInitial>Salvar</button>
+    </div>
+  `,
+  styleUrls: ['./user-profile.component.scss'],
+})
+export class DialogAvataresComponent implements OnInit {
+
+  avatares: string[];
+
+  constructor(
+    public dialogRef: MatDialogRef<DialogAvataresComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any) {}
+
+  ngOnInit() {
+    this.avatares = ['Avatar_B_01.png', 'Avatar_B_02.png', 'Avatar_B_03.png', 'Avatar_G_01.png', 'Avatar_G_02.png', 'Avatar_G_03.png'];
+  }
+
+  onNoClick(): void {
+    this.dialogRef.close();
   }
 }

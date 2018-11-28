@@ -3,7 +3,7 @@ package br.com.hvp.dto;
 import java.util.List;
 
 public class UserDTO {
-	
+
 	private Long id;
 	private String name;
 	private String dtBirth;
@@ -13,12 +13,14 @@ public class UserDTO {
 	private String password;
 	private String cdConfirmation;
 	private int status;
+	private String avatar;
 	private List<ProfileDTO> profile;
-	
-	public UserDTO() {}
+
+	public UserDTO() {
+	}
 
 	public UserDTO(String name, String dtBirth, char sex, String user, String email, String password,
-			String cdConfirmation, int status) {
+			String cdConfirmation, int status, String avatar) {
 		this.name = name;
 		this.dtBirth = dtBirth;
 		this.sex = sex;
@@ -27,6 +29,7 @@ public class UserDTO {
 		this.password = password;
 		this.cdConfirmation = cdConfirmation;
 		this.status = status;
+		this.avatar = avatar;
 	}
 
 	public Long getId() {
@@ -107,6 +110,14 @@ public class UserDTO {
 
 	public void setStatus(int status) {
 		this.status = status;
+	}
+
+	public String getAvatar() {
+		return avatar;
+	}
+
+	public void setAvatar(String avatar) {
+		this.avatar = avatar;
 	}
 
 }

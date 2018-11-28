@@ -1,11 +1,20 @@
-<app-page-simple imgBackground="assets/images/Headers/header-heroes3.jpg">
-  <span title class="title">
-    <img class="img-profile" src="assets/images/Avatares/Avatar_B_02.png">
-  </span>
-  <div content>
+<app-page-simple imgBackground="../../../assets/images/Headers/header-heroes3.jpg" [content]="false">
+  <div title class="title">
+    <img class="img-profile" [src]="'assets/images/Avatares/' + userLogged?.avatar" (click)="openAvatares(userLogged?.avatar)">
     <div class="container">
-
+      <h2 class="text">{{userLogged.name}}</h2>
+      <div class="text">{{userLogged.email}}</div>
+      <div class="text"><h5>Data Nascimento: </h5> {{userLogged.dtBirth | date}}</div>
+      <div class="text"><h5>Usuário: </h5> {{userLogged.user}}</div>
+      <!-- <div class="line">
+        <mat-icon class="mat-18" matTooltip="Editar" (click)="edit()">edit</mat-icon>
+      </div>
+      <div class="line">
+        <mat-icon class="mat-18" matTooltip="Editar" (click)="edit()">edit</mat-icon>
+      </div>
+      <div class="line">
+        <mat-icon class="mat-18" matTooltip="Editar" (click)="edit()">edit</mat-icon>
+      </div> -->
     </div>
   </div>
 </app-page-simple>
- 
