@@ -4,6 +4,9 @@
 Este projeto foi criado para um mini-TCC da faculdade. Onde é possivel conhecer todos os heróis da Marvel. Iterar com um game (Super Trunfo Marvel), onde há uma batalha de características.
 
 ## Telas
+#### Página de Login
+![alt text](src/assets/images/Screenshot/login.png)
+
 #### Página Inicial
 ![alt text](src/assets/images/Screenshot/homepage.png)
 
