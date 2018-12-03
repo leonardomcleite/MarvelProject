@@ -1,13 +1,14 @@
 package br.com.hvp.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.hvp.business.CharacterBusiness;
 import br.com.hvp.business.GameBusiness;
-import br.com.hvp.dto.LobbyGameDTO;
-import br.com.hvp.dto.PlayerDTO;
+import br.com.hvp.dto.GameDTO;
+import br.com.hvp.dto.RulesGameDTO;
 import br.com.hvp.dto.UserDTO;
 import br.com.hvp.service.interfaces.GameInterface;
 
@@ -19,27 +20,28 @@ public class GameService implements GameInterface {
 	private GameBusiness gameBusiness;
 
 	@Override
-	public void startGame(PlayerDTO player) throws Exception {
-		// TODO Auto-generated method stub
-		
+	public GameDTO createGame(UserDTO user, RulesGameDTO rules) throws Exception {
+		return this.gameBusiness.createGame(user, rules);
 	}
 
 	@Override
-	public LobbyGameDTO enterGame(UserDTO user) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+	public GameDTO startGame(Long idGame) throws Exception {
+		return this.gameBusiness.StartGame(idGame);
 	}
 
 	@Override
-	public LobbyGameDTO listLobbys() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+	public GameDTO enterGame(GameDTO game, UserDTO user) throws Exception {
+		return this.gameBusiness.EnterGame(game, user);
 	}
 
 	@Override
-	public boolean roundPlayer(UserDTO user) throws Exception {
-		// TODO Auto-generated method stub
-		return false;
+	public List<GameDTO> listGames() throws Exception {
+		return this.gameBusiness.ListGames();
+	}
+
+	@Override
+	public boolean roundPlayer(Long player, Long game) throws Exception {
+		return this.gameBusiness.roundPlayer(player, game);
 	}
 
 	@Override
@@ -59,5 +61,7 @@ public class GameService implements GameInterface {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+	
 
 }

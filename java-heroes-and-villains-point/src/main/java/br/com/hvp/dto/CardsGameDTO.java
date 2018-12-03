@@ -2,17 +2,31 @@ package br.com.hvp.dto;
 
 public class CardsGameDTO {
 
+	private Long id;
+	private CharacterDTO character;
 	private String position;
 	private static int totalCards = 0;
-	private CharacterDTO character;
 
-	public CardsGameDTO() {
-		CardsGameDTO.totalCards++;
+	public CardsGameDTO(CharacterDTO character, String position) {
+		super();
+		this.character = character;
+		this.position = position;
 	}
 
-	public CardsGameDTO(String position) {
-		CardsGameDTO.totalCards++;
-		this.position = position;
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public CharacterDTO getCharacter() {
+		return character;
+	}
+
+	public void setCharacter(CharacterDTO character) {
+		this.character = character;
 	}
 
 	public String getPosition() {
@@ -29,14 +43,6 @@ public class CardsGameDTO {
 
 	public static void setTotalCards(int totalCards) {
 		CardsGameDTO.totalCards = totalCards;
-	}
-
-	public CharacterDTO getCharacter() {
-		return character;
-	}
-
-	public void setCharacter(CharacterDTO character) {
-		this.character = character;
 	}
 
 }

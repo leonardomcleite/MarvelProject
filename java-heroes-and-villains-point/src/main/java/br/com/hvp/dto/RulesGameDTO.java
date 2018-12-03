@@ -1,11 +1,9 @@
 package br.com.hvp.dto;
 
-public class LobbyGameDTO {
+public class RulesGameDTO {
 
 	private int cardsPerPlayer;
-	// Em minutos
 	private int timePlayed;
-	private GameDTO game;
 
 	public int getCardsPerPlayer() {
 		return cardsPerPlayer;
@@ -21,14 +19,6 @@ public class LobbyGameDTO {
 
 	public void setTimePlayed(int timePlayed) {
 		this.timePlayed = timePlayed;
-	}
-
-	public GameDTO getGame() {
-		return game;
-	}
-
-	public void setGame(GameDTO game) {
-		this.game = game;
 	}
 
 }

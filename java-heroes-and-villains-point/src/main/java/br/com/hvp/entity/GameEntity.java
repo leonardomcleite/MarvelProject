@@ -13,7 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -45,9 +45,9 @@ public class GameEntity {
 	@Column(name = "TIME_PLAYED")
 	private int timePlayed;
 
-//	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE })
-//	@JoinTable(name = "GAME_PLAYERS", joinColumns = @JoinColumn(name = "ID"), inverseJoinColumns = @JoinColumn(name = "GAME"))
-//	private List<PlayerEntity> players;
+	@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE })
+	@JoinTable(name = "GAME_PLAYER", joinColumns = @JoinColumn(name = "GAME"), inverseJoinColumns = @JoinColumn(name = "PLAYER"))
+	private List<PlayerEntity> player;
 
 	public Long getId() {
 		return id;
@@ -101,16 +101,16 @@ public class GameEntity {
 		return timePlayed;
 	}
 
+	public List<PlayerEntity> getPlayer() {
+		return player;
+	}
+
+	public void setPlayer(List<PlayerEntity> player) {
+		this.player = player;
+	}
+
 	public void setTimePlayed(int timePlayed) {
 		this.timePlayed = timePlayed;
 	}
-
-//	public List<PlayerEntity> getPlayers() {
-//		return players;
-//	}
-//
-//	public void setPlayers(List<PlayerEntity> players) {
-//		this.players = players;
-//	}
 
 }

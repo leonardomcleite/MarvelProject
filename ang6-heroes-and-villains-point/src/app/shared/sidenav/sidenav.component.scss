@@ -82,3 +82,11 @@ mat-icon.menu-icon {
   line-height: 48px;
   margin: 0 10px 0 0;
 }
+
+.footer {
+  position: fixed;
+  z-index: 2;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
