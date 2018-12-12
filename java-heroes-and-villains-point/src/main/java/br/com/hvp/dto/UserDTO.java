@@ -2,11 +2,11 @@ package br.com.hvp.dto;
 
 import java.util.List;
 
-public class UserDTO {
+public class UserDTO<T> {
 
 	private Long id;
 	private String name;
-	private String dtBirth;
+	private T dtBirth;
 	private char sex;
 	private String user;
 	private String email;
@@ -15,22 +15,6 @@ public class UserDTO {
 	private int status;
 	private String avatar;
 	private List<ProfileDTO> profile;
-
-	public UserDTO() {
-	}
-
-	public UserDTO(String name, String dtBirth, char sex, String user, String email, String password,
-			String cdConfirmation, int status, String avatar) {
-		this.name = name;
-		this.dtBirth = dtBirth;
-		this.sex = sex;
-		this.user = user;
-		this.email = email;
-		this.password = password;
-		this.cdConfirmation = cdConfirmation;
-		this.status = status;
-		this.avatar = avatar;
-	}
 
 	public Long getId() {
 		return id;
@@ -48,11 +32,11 @@ public class UserDTO {
 		this.name = name;
 	}
 
-	public String getDtBirth() {
+	public T getDtBirth() {
 		return dtBirth;
 	}
 
-	public void setDtBirth(String dtBirth) {
+	public void setDtBirth(T dtBirth) {
 		this.dtBirth = dtBirth;
 	}
 
@@ -96,14 +80,6 @@ public class UserDTO {
 		this.cdConfirmation = cdConfirmation;
 	}
 
-	public List<ProfileDTO> getProfile() {
-		return profile;
-	}
-
-	public void setProfile(List<ProfileDTO> profile) {
-		this.profile = profile;
-	}
-
 	public int getStatus() {
 		return status;
 	}
@@ -118,6 +94,14 @@ public class UserDTO {
 
 	public void setAvatar(String avatar) {
 		this.avatar = avatar;
+	}
+
+	public List<ProfileDTO> getProfile() {
+		return profile;
+	}
+
+	public void setProfile(List<ProfileDTO> profile) {
+		this.profile = profile;
 	}
 
 }

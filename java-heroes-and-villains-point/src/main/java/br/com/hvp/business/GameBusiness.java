@@ -1,5 +1,7 @@
 package br.com.hvp.business;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -36,7 +38,12 @@ public class GameBusiness {
 	@Autowired
 	private GameBusinessWebSocket gameBusinessWebSocket;
 
-	public GameDTO createGame(UserDTO user, RulesGameDTO rules) {
+	public GameDTO createGame(UserDTO user, RulesGameDTO rules) throws ParseException {
+		SimpleDateFormat date = new SimpleDateFormat("dd-MM-yyyy");
+		String Onlydate = ((String) user.getDtBirth()).substring(0, 10);
+		Date dateFormated = date.parse(Onlydate);
+		user.setDtBirth(date);
+		
 //		Cria Game
 		GameEntity game = new GameEntity();
 		game.setTimePlayed(rules.getTimePlayed());
@@ -44,14 +51,12 @@ public class GameBusiness {
 		game.setDate(new Date());
 		game.setStage(0);
 
-//		Buscar Personagens "Elegiveis (Com imagens e caracteristicas)"
 		List<CardsEntity> cardsEntity = new ArrayList<>();
 		List<CharacterEntity> characterEntity = characterRepository.findByCharacterEligible();
 
-//		Seleciona aleatoriamente x personagens
-		List<Integer> random = this.generateListRandomNumbers(0, rules.getCardsPerPlayer());
+		List<Integer> random = this.generateListRandomNumbers(0, characterEntity.size(), rules.getCardsPerPlayer());
 		for (int i = 0; i < random.size(); i++) {
-			cardsEntity.add(new CardsEntity(characterEntity.get(random.get(i)), ""));
+			cardsEntity.add(new CardsEntity(null, "", characterEntity.get(random.get(i))));
 		}
 
 		PlayerEntity player = new PlayerEntity();
@@ -60,19 +65,20 @@ public class GameBusiness {
 
 		List<PlayerEntity> players = new ArrayList<PlayerEntity>();
 		players.add(player);
+		game.setPlayer(players);
 
 		gameRepository.save(game);
 		game.setRoundPlayer(player.getId());
-		gameRepository.flush();
+		gameRepository.save(game);
 
 		gameBusinessWebSocket.sendList();
 
 		return beanMapper.map(game, GameDTO.class);
 	}
 
-	public List<Integer> generateListRandomNumbers(Integer from, Integer to) {
+	public List<Integer> generateListRandomNumbers (Integer from, Integer to, Integer iterations) {
 		List<Integer> array = new ArrayList<>();
-		for (int i = 0; i < array.size(); i++) {
+		for (int i = 0; i < iterations; i++) {
 			array.add((Integer) new Random().nextInt(to - from) + from);
 		}
 		return array;
@@ -93,19 +99,23 @@ public class GameBusiness {
 		return gameDTO;
 	}
 
-	public GameDTO EnterGame(GameDTO game, UserDTO user) {
-//		Buscar Personagens "Elegiveis (Com imagens e caracteristicas)"
+	public GameDTO EnterGame(GameDTO game, UserDTO user) throws ParseException {
+		SimpleDateFormat date = new SimpleDateFormat("dd-MM-yyyy");
+		String Onlydate = ((String) user.getDtBirth()).substring(0, 10);
+		Date dateFormated = date.parse(Onlydate);
+		user.setDtBirth(date);
+		
 		List<CardsEntity> cardsEntity = new ArrayList<>();
 		List<CharacterEntity> characterEntity = characterRepository.findByCharacterEligible();
 
-//		Seleciona aleatoriamente x personagens
-		List<Integer> random = this.generateListRandomNumbers(0, game.getCardsPerPlayer());
+		List<Integer> random = this.generateListRandomNumbers(0, characterEntity.size(), game.getCardsPerPlayer());
 		for (int i = 0; i < random.size(); i++) {
-			cardsEntity.add(new CardsEntity(characterEntity.get(random.get(i)), ""));
+			cardsEntity.add(new CardsEntity(null, "", characterEntity.get(random.get(i))));
 		}
 
 		PlayerEntity player = new PlayerEntity();
 		player.setUser(beanMapper.map(user, UserEntity.class));
+		player.setCards(cardsEntity);
 		player.setCards(cardsEntity);
 
 		Optional<GameEntity> optionalGame = gameRepository.findById(game.getId());

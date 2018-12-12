@@ -57,7 +57,7 @@ public class UserBusiness {
 		}
 		
 		SimpleDateFormat date = new SimpleDateFormat("dd/MM/yyyy");
-		Date dateFormated = date.parse(user.getDtBirth());
+		Date dateFormated = date.parse((String) user.getDtBirth());
 		userEntity.setDtBirth(dateFormated);
 		userEntity.setName(user.getName());
 		userEntity.setSex(user.getSex());

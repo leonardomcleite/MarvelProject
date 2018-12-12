@@ -18,7 +18,7 @@
         Comics
       </ng-template>
       <div *ngFor="let comic of comics; let i = index" class="characters">
-        <mat-card class="example-card">
+        <mat-card class="example-card" (click)="navigationService.openNewTabAndRedirect(comic?.urls[0]?.url)">
           <div class="border-bottom-card"></div>
           <mat-card-header>
             <div mat-card-avatar class="header-image">

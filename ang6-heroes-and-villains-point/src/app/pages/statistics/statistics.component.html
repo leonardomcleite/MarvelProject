@@ -1,36 +1,38 @@
-<div class="container">
-  <mat-card class="graph-card">
-    <mat-card-header>
-      <mat-card-title>Distribuição de Acessos</mat-card-title>
-      <mat-card-subtitle>Homens e Mulheres</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-      <canvas baseChart 
-        [chartType]="'bubble'" 
-        [datasets]="bubbleChartData" 
-        [labels]="bubbleChartLabels" 
-        [options]="bubbleChartOptions"
-        [legend]="true" 
-        (chartClick)="onChartClick($event)" class="graph">
-      </canvas>
-    </mat-card-content>
-  </mat-card>
-  <mat-card class="graph-card">
-    <mat-card-header>
-      <mat-card-title>Acessos à Aplicação</mat-card-title>
-      <mat-card-subtitle>Tempo Real</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-      <canvas baseChart
-        [chartType]="'line'"
-        [datasets]="lineChartData"
-        [labels]="lineChartLabels"
-        [options]="lineChartOptions"
-        [legend]="false"
-        [colors]="lineChartColors"
-        (chartHover)="chartHovered($event)"
-        (chartClick)="chartClicked($event)" class="graph">
-      </canvas>
-    </mat-card-content>
-  </mat-card>
+<div class="content">
+  <div class="container">
+    <mat-card class="graph-card">
+      <mat-card-header>
+        <mat-card-title>Distribuição de Acessos</mat-card-title>
+        <mat-card-subtitle>Homens e Mulheres</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <canvas baseChart 
+          [chartType]="'bubble'" 
+          [datasets]="bubbleChartData" 
+          [labels]="bubbleChartLabels" 
+          [options]="bubbleChartOptions"
+          [legend]="true" 
+          (chartClick)="onChartClick($event)" class="graph">
+        </canvas>
+      </mat-card-content>
+    </mat-card>
+    <mat-card class="graph-card">
+      <mat-card-header>
+        <mat-card-title>Acessos à Aplicação</mat-card-title>
+        <mat-card-subtitle>Tempo Real</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <canvas baseChart
+          [chartType]="'line'"
+          [datasets]="lineChartData"
+          [labels]="lineChartLabels"
+          [options]="lineChartOptions"
+          [legend]="false"
+          [colors]="lineChartColors"
+          (chartHover)="chartHovered($event)"
+          (chartClick)="chartClicked($event)" class="graph">
+        </canvas>
+      </mat-card-content>
+    </mat-card>
+  </div>
 </div>

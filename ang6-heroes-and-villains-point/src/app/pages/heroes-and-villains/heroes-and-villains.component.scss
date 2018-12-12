@@ -129,3 +129,36 @@ span.text-statistics {
 mat-card-content.mat-card-content {
   padding: 10px;
 }
+
+.container {
+  margin-left: 16px;
+}
+
+.name-character {
+  line-height: 47px;
+  height: 100%;
+  display: flex;
+}
+
+.img-profile {
+  width: 200px;
+  height: 200px;
+  border-right: 1px solid #595959;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  &:hover {
+    color: #f44336 !important;
+  }
+}
+
+.text {
+  font-size: 18px;
+}
+
+.statistics-detail {
+  padding: 5px 0;
+}

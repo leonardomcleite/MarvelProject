@@ -1,0 +1,13 @@
+<div>
+  <mat-card class="content mat-elevation-z8">
+    <mat-card-title>
+      <ng-content class="menu-action" select="[menu-action]"></ng-content>
+      <ng-content select="[title]"></ng-content>
+      <ng-content class="action" select="[action]"></ng-content>
+    </mat-card-title>
+    <mat-divider></mat-divider>
+    <mat-card-content *ngIf="content">
+      <ng-content select="[content]"></ng-content>
+    </mat-card-content>
+  </mat-card>
+</div>

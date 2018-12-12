@@ -1,8 +1,9 @@
 div.backgroung {
   background-image: url(../../../../assets/images/Game/Mike-Alcantara.jpg);
-  height: 560px;
+  height: calc(100% - 134px);
+  min-height: 560px;
   background-size: 100% 100%;
-  margin: 1% 20%;
+  margin: 20px 20%;
   vertical-align: middle;
 
   h1 {

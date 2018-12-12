@@ -6,21 +6,22 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import br.com.hvp.dto.CreateGameDTO;
+import br.com.hvp.dto.EnterGameDTO;
 import br.com.hvp.dto.GameDTO;
-import br.com.hvp.dto.RulesGameDTO;
 import br.com.hvp.dto.UserDTO;
 
 @RequestMapping(value = "/game")
 public interface GameInterface {
 	
 	@PostMapping(value = "/create", headers = "content-type=application/json")
-	public GameDTO createGame(UserDTO user, RulesGameDTO rules) throws Exception;
+	public GameDTO createGame(CreateGameDTO paramsGame) throws Exception;
 	
 	@PostMapping(value = "/start", headers = "content-type=application/json")
 	public GameDTO startGame(Long idGame) throws Exception;
 	
 	@PostMapping(value = "/enter", headers = "content-type=application/json")
-	public GameDTO enterGame(GameDTO game, UserDTO user) throws Exception;
+	public GameDTO enterGame(EnterGameDTO paramsGame) throws Exception;
 	
 	@GetMapping(value = "/list-games")
 	public List<GameDTO> listGames() throws Exception;

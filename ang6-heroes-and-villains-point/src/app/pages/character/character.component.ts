@@ -1,11 +1,10 @@
-import { state, style, trigger } from '@angular/animations';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog, MatSnackBar, MatSnackBarConfig } from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
-import { encodeUriFragment } from '@angular/router/src/url_tree';
 import { Subscription } from 'rxjs';
 import { ParamsPagination } from '../../models/params-pagination.model';
 import { MarvelHeroesService } from '../../services/marvel-heroes/marvel-heroes.service';
+import { Animations } from '../../shared/animations/animations';
 import { DateFormatUtilService } from '../../shared/utils/date-format/date-format-util.service';
 import { LazyLoadUtilClass } from '../../shared/utils/lazy-load/lazy-load-util.class';
 import { NavigationService } from '../../shared/utils/navigation/navigation.service';
@@ -16,17 +15,7 @@ import { ScrolledService } from '../../shared/utils/scrolled/scrolled.service';
   selector: 'character',
   templateUrl: './character.component.html',
   styleUrls: ['./character.component.scss'],
-  animations: [
-    trigger('barFilterPosition', [
-      state('1', style({
-        'position': 'fixed',
-        'top': '48px',
-        'margin-bottom': '50px',
-        'z-index': '999',
-        'width': '100%',
-      })),
-    ])
-  ],
+  animations: [Animations.barFilterPosition],
 })
 export class CharacterComponent implements OnInit, OnDestroy {
 
@@ -57,7 +46,7 @@ export class CharacterComponent implements OnInit, OnDestroy {
     public dateUtil: DateFormatUtilService,
     public scrolledService: ScrolledService,
     private route: ActivatedRoute,
-    public navigate: NavigationService
+    public navigationService: NavigationService
   ) {}
 
   ngOnInit() {
@@ -223,7 +212,7 @@ export class CharacterComponent implements OnInit, OnDestroy {
   }
 
   read(digitalId: number) {
-    this.navigate.openNewTabAndRedirect('https://read.marvel.com/#/book/' + digitalId);
+    this.navigationService.openNewTabAndRedirect('https://read.marvel.com/#/book/' + digitalId);
   }
 
   imgLoad(thumbnail) {

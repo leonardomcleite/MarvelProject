@@ -11,7 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -26,12 +26,12 @@ public class PlayerEntity {
 	@Column(name = "ID")
 	private Long id;
 
-	@OneToOne(fetch = FetchType.LAZY, cascade = { CascadeType.REFRESH })
+	@OneToOne(fetch = FetchType.LAZY)
 	@JoinTable(name = "USERS", joinColumns = @JoinColumn(name = "USER_ID"), inverseJoinColumns = @JoinColumn(name = "ID"))
 	private UserEntity user;
 
-	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE })
-	@JoinTable(name = "CARDS", joinColumns = @JoinColumn(name = "CARDS"), inverseJoinColumns = @JoinColumn(name = "CHARACTER"))
+	@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE })
+	@JoinTable(name = "PLAYER_CARDS", joinColumns = @JoinColumn(name = "CARD"), inverseJoinColumns = @JoinColumn(name = "PLAYER"))
 	private List<CardsEntity> cards;
 
 	@Column(name = "SOCORE")

@@ -5,11 +5,8 @@
   <header>
     <h1>Todos os Heróis e Vilões Estão Aqui</h1>
   </header>
-  <filter-and-search-bar
-  [@barFilterPosition]="fixar"
-  (orderBy)="orderBy($event)"
-  (orderByName)="orderByName($event)"
-  (searchBy)="searchBy($event)">
+  <filter-and-search-bar [hidden]="!allCharacters" [@barFilterPosition]="fixar" (orderBy)="orderBy($event)"
+    (orderByName)="orderByName($event)" (searchBy)="searchBy($event)">
   </filter-and-search-bar>
   <mat-tab-group [backgroundColor]="'accent'" [(selectedIndex)]="selectedTab" (selectedIndexChange)="tabChange()">
     <mat-tab>
@@ -17,55 +14,103 @@
         <mat-icon class="example-tab-icon">recent_actors</mat-icon>
         Heróis e Vilões
       </ng-template>
-      <mat-card class="example-card" *ngFor="let heroe of heroes; let i = index" [@animationCard]>
-        <div class="border-bottom-card"></div>
-        <mat-card-header>
-          <div mat-card-avatar class="header-image">
-            <mat-icon (mouseenter)="heroe.favorite = !heroe.favorite" (mouseleave)="heroe.favorite = !heroe.favorite"
-              (click)="marcarFavorito(heroe.favorite, i)" class="favorite" [class.star]="heroe.favorite">{{heroe.favorite
-              ? 'star' : 'star_border'}}</mat-icon>
+      <div [hidden]="!allCharacters">
+        <mat-card class="example-card" *ngFor="let heroe of heroes; let i = index" [@FadeInAndFadeOutIncremental]="i">
+          <div class="border-bottom-card"></div>
+          <mat-card-header>
+            <div mat-card-avatar class="header-image">
+              <mat-icon (mouseenter)="heroe.favorite = !heroe.favorite" (mouseleave)="heroe.favorite = !heroe.favorite"
+                (click)="marcarFavorito(heroe.favorite, i)" class="favorite" [class.star]="heroe.favorite">{{heroe.favorite
+                ? 'star' : 'star_border'}}</mat-icon>
+            </div>
+            <mat-card-title>{{heroe.name}}</mat-card-title>
+            <mat-card-subtitle>Modificado em: {{dateUtil.formatDate(heroe.modified, 'dd/mm/yyyy')}}</mat-card-subtitle>
+          </mat-card-header>
+          <div class="zoom" (click)="clickCharacter(i)">
+            <img mat-card-image [src]="imgLoad(heroe?.thumbnail)">
           </div>
-          <mat-card-title>{{heroe.name}}</mat-card-title>
-          <mat-card-subtitle>Modificado em: {{dateUtil.formatDate(heroe.modified, 'dd/mm/yyyy')}}</mat-card-subtitle>
-        </mat-card-header>
-        <div class="zoom" [routerLink]="['/character', heroe.name, heroe.id]">
-          <img mat-card-image [src]="imgLoad(heroe?.thumbnail)">
+          <mat-card-content>
+            <div class="statistics">
+              <span class="title-statistics">Caráter: </span>
+              <span class="text-statistics">{{deParaCarater(heroe?.Alignment)}}</span>
+            </div>
+            <div class="statistics">
+              <span class="title-statistics">Inteligência (0 à 7)</span>
+              <mat-progress-bar mode="determinate" [value]="heroe?.intelligence / 7 * 100" [matTooltip]="'Inteligência: ' + heroe?.intelligence"></mat-progress-bar>
+            </div>
+            <div class="statistics">
+              <span class="title-statistics">Força (0 à 7)</span>
+              <mat-progress-bar mode="determinate" [value]="heroe?.strength / 7 * 100" [matTooltip]="'Força: ' + heroe?.strength"></mat-progress-bar>
+            </div>
+            <div class="statistics">
+              <span class="title-statistics">Energia (0 à 7)</span>
+              <mat-progress-bar mode="determinate" [value]="heroe?.energy / 7 * 100" [matTooltip]="'Energia: ' + heroe?.energy"></mat-progress-bar>
+            </div>
+            <div class="statistics">
+              <span class="title-statistics">Rapidez (0 à 7)</span>
+              <mat-progress-bar mode="determinate" [value]="heroe?.speed / 7 * 100" [matTooltip]="'Rapidez: ' + heroe?.speed"></mat-progress-bar>
+            </div>
+            <div class="statistics">
+              <span class="title-statistics">Durabilidade (0 à 7)</span>
+              <mat-progress-bar mode="determinate" [value]="heroe?.durability / 7 * 100" [matTooltip]="'Durabilidade: ' + heroe?.durability"></mat-progress-bar>
+            </div>
+            <div class="statistics">
+              <span class="title-statistics">Combate (0 à 7)</span>
+              <mat-progress-bar mode="determinate" [value]="heroe?.combat / 7 * 100" [matTooltip]="'Combate: ' + heroe?.combat"></mat-progress-bar>
+            </div>
+          </mat-card-content>
+        </mat-card>
+        <div>
+          <a class="end-results" *ngIf="endHeroes" [href]="path">
+            <mat-icon>keyboard_arrow_up</mat-icon><span>Fim dos Resultados</span>
+            <mat-icon>keyboard_arrow_up</mat-icon>
+          </a>
         </div>
-        <mat-card-content>
-          <div class="statistics">
-            <span class="title-statistics">Caráter: </span>
-            <span class="text-statistics">{{deParaCarater(heroe?.Alignment)}}</span>
+      </div>
+      <div *ngIf="!allCharacters" [@FadeInAndFadeOutIncremental]="0">
+        <app-page-detail [content]="true">  
+          <div title class="name-character">
+            <img class="img-profile" [src]="imgLoad(characterSelected?.thumbnail)">
+            <div class="container">
+              <h2>{{characterSelected?.name}}</h2>
+              <div class="text">{{characterSelected?.description}}</div>
+              <button mat-raised-button color="primary" [routerLink]="['/character', characterSelected?.name, characterSelected?.id]">Ir para Histórias</button>
+            </div>
+            <div>
+              <mat-icon class="close" (click)="allCharacters = !allCharacters" matTooltip="Fechar">close</mat-icon>
+            </div>
           </div>
-          <div class="statistics">
-            <span class="title-statistics">Inteligência (0 à 7)</span>
-            <mat-progress-bar mode="determinate" [value]="heroe?.intelligence / 7 * 100" [matTooltip]="'Inteligência: ' + heroe?.intelligence"></mat-progress-bar>
+          <div content>
+            <div class="statistics-detail">
+              <span class="text">Caráter: </span>
+              <span class="text-statistics text">{{deParaCarater(characterSelected?.Alignment)}}</span>
+            </div>
+            <div class="statistics-detail">
+              <span class="text">Inteligência (0 à 7)</span>
+              <mat-progress-bar mode="determinate" [value]="characterSelected?.intelligence / 7 * 100" [matTooltip]="'Inteligência: ' + characterSelected?.intelligence"></mat-progress-bar>
+            </div>
+            <div class="statistics-detail">
+              <span class="text">Força (0 à 7)</span>
+              <mat-progress-bar mode="determinate" [value]="characterSelected?.strength / 7 * 100" [matTooltip]="'Força: ' + characterSelected?.strength"></mat-progress-bar>
+            </div>
+            <div class="statistics-detail">
+              <span class="text">Energia (0 à 7)</span>
+              <mat-progress-bar mode="determinate" [value]="characterSelected?.energy / 7 * 100" [matTooltip]="'Energia: ' + characterSelected?.energy"></mat-progress-bar>
+            </div>
+            <div class="statistics-detail">
+              <span class="text">Rapidez (0 à 7)</span>
+              <mat-progress-bar mode="determinate" [value]="characterSelected?.speed / 7 * 100" [matTooltip]="'Rapidez: ' + characterSelected?.speed"></mat-progress-bar>
+            </div>
+            <div class="statistics-detail">
+              <span class="text">Durabilidade (0 à 7)</span>
+              <mat-progress-bar mode="determinate" [value]="characterSelected?.durability / 7 * 100" [matTooltip]="'Durabilidade: ' + characterSelected?.durability"></mat-progress-bar>
+            </div>
+            <div class="statistics-detail">
+              <span class="text">Combate (0 à 7)</span>
+              <mat-progress-bar mode="determinate" [value]="characterSelected?.combat / 7 * 100" [matTooltip]="'Combate: ' + characterSelected?.combat"></mat-progress-bar>
+            </div>
           </div>
-          <div class="statistics">
-            <span class="title-statistics">Força (0 à 7)</span>
-            <mat-progress-bar mode="determinate" [value]="heroe?.strength / 7 * 100" [matTooltip]="'Força: ' + heroe?.strength"></mat-progress-bar>
-          </div>
-          <div class="statistics">
-            <span class="title-statistics">Energia (0 à 7)</span>
-            <mat-progress-bar mode="determinate" [value]="heroe?.energy / 7 * 100" [matTooltip]="'Energia: ' + heroe?.energy"></mat-progress-bar>
-          </div>
-          <div class="statistics">
-            <span class="title-statistics">Rapidez (0 à 7)</span>
-            <mat-progress-bar mode="determinate" [value]="heroe?.speed / 7 * 100" [matTooltip]="'Rapidez: ' + heroe?.speed"></mat-progress-bar>
-          </div>
-          <div class="statistics">
-            <span class="title-statistics">Durabilidade (0 à 7)</span>
-            <mat-progress-bar mode="determinate" [value]="heroe?.durability / 7 * 100" [matTooltip]="'Durabilidade: ' + heroe?.durability"></mat-progress-bar>
-          </div>
-          <div class="statistics">
-            <span class="title-statistics">Combate (0 à 7)</span>
-            <mat-progress-bar mode="determinate" [value]="heroe?.combat / 7 * 100" [matTooltip]="'Combate: ' + heroe?.combat"></mat-progress-bar>
-          </div>
-        </mat-card-content>
-      </mat-card>
-      <div>
-        <a class="end-results" *ngIf="endHeroes" [href]="path">
-          <mat-icon>keyboard_arrow_up</mat-icon><span>Fim dos Resultados</span><mat-icon>keyboard_arrow_up</mat-icon>
-        </a>
+        </app-page-detail>
       </div>
     </mat-tab>
   </mat-tab-group>

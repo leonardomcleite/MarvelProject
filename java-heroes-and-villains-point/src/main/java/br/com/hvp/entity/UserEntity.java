@@ -122,14 +122,6 @@ public class UserEntity {
 		this.cdConfirmation = cdConfirmation;
 	}
 
-	public List<ProfileEntity> getProfile() {
-		return profile;
-	}
-
-	public void setProfile(List<ProfileEntity> profile) {
-		this.profile = profile;
-	}
-
 	public int getStatus() {
 		return status;
 	}
@@ -144,6 +136,14 @@ public class UserEntity {
 
 	public void setAvatar(String avatar) {
 		this.avatar = avatar;
+	}
+
+	public List<ProfileEntity> getProfile() {
+		return profile;
+	}
+
+	public void setProfile(List<ProfileEntity> profile) {
+		this.profile = profile;
 	}
 
 }

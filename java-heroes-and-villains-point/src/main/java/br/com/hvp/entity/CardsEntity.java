@@ -1,6 +1,5 @@
 package br.com.hvp.entity;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -26,12 +25,13 @@ public class CardsEntity {
 	@Column(name = "POSITION")
 	private String position;
 
-	@OneToOne(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE })
+	@OneToOne(fetch = FetchType.LAZY)
 	@JoinTable(name = "CHARACTER", joinColumns = @JoinColumn(name = "CHARACTER"), inverseJoinColumns = @JoinColumn(name = "ID"))
 	private CharacterEntity character;
 
-	public CardsEntity(CharacterEntity character, String position) {
+	public CardsEntity(Long id, String position, CharacterEntity character) {
 		super();
+		this.id = id;
 		this.position = position;
 		this.character = character;
 	}

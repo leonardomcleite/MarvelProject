@@ -1,10 +1,11 @@
-import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog, MatSnackBar, MatSnackBarConfig } from '@angular/material';
 import { Subscription } from 'rxjs/internal/Subscription';
+import { CharacterModel } from '../../models/character.model';
 import { ParamsPagination } from '../../models/params-pagination.model';
 import { CharactersService } from '../../services/characters/characters.service';
 import { MarvelHeroesService } from '../../services/marvel-heroes/marvel-heroes.service';
+import { Animations } from '../../shared/animations/animations';
 import { DateFormatUtilService } from '../../shared/utils/date-format/date-format-util.service';
 import { LazyLoadUtilClass } from '../../shared/utils/lazy-load/lazy-load-util.class';
 import { ScrolledService } from '../../shared/utils/scrolled/scrolled.service';
@@ -15,25 +16,8 @@ import { ScrolledService } from '../../shared/utils/scrolled/scrolled.service';
   templateUrl: './heroes-and-villains.component.html',
   styleUrls: ['./heroes-and-villains.component.scss'],
   animations: [
-    trigger('barFilterPosition', [
-      state('1', style({
-        'position': 'fixed',
-        'top': '48px',
-        'margin-bottom': '50px',
-        'z-index': '999',
-        'width': '100%',
-      })),
-    ]),
-    trigger('animationCard', [
-      transition(':enter', [
-        style({ transform: 'translateY(50%)' }),
-        animate('.3s', style({ transform: 'translateY(0%)' }))
-      ]),
-      transition(':leave', [
-        style({ transform: 'translateY(0%)' }),
-        animate('.3s', style({ transform: 'translateY(50%)' }))
-      ])
-    ])
+    Animations.FadeInAndFadeOutIncremental,
+    Animations.barFilterPosition,
   ],
 })
 export class HeroesAndVillainsComponent implements OnInit, OnDestroy {
@@ -45,6 +29,8 @@ export class HeroesAndVillainsComponent implements OnInit, OnDestroy {
   subscription: Subscription[] = [];
   endHeroes: boolean;
   fixar = '0';
+  allCharacters = true;
+  characterSelected: CharacterModel = new CharacterModel();
 
   constructor(
     public marvelHeroesService: MarvelHeroesService,
@@ -62,7 +48,9 @@ export class HeroesAndVillainsComponent implements OnInit, OnDestroy {
       this.getHeroes();
     }));
     this.subscription.push(this.scrolledService.scrollDown.subscribe(returnQuery => {
-      this.scrollDown();
+      if (this.allCharacters) {
+        this.scrollDown();
+      }
     }));
     this.subscription.push(this.scrolledService.fixedPosition.subscribe(returnQuery => {
       this.getElementOffset(returnQuery);
@@ -178,6 +166,11 @@ export class HeroesAndVillainsComponent implements OnInit, OnDestroy {
       default:
         return 'Neutro';
     }
+  }
+
+  clickCharacter(index: number) {
+    this.characterSelected = this.heroes[index];
+    this.allCharacters = !this.allCharacters;
   }
 
 }
